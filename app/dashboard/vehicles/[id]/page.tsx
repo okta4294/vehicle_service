@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { getServiceRecommendation, calculateNextService, getOilRecommendation, oilIntervals } from '@/lib/service-intervals'
 import { updateKilometer, deleteVehicle } from '@/app/actions/vehicles'
 import { addServiceRecord, deleteServiceRecord } from '@/app/actions/services'
+import { AddServiceForm } from './AddServiceForm'
 
 export default async function VehicleDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await getSession()
@@ -156,63 +157,11 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
         <div className="lg:col-span-2 space-y-6">
           <div className="glass-card p-6 rounded-3xl border border-dark-800">
             <h3 className="text-xl font-bold text-dark-50 mb-6">Tambah Riwayat Servis</h3>
-            <form action={async (formData) => {
-              'use server'
-              await addServiceRecord(formData)
-            }} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-               <input type="hidden" name="vehicleId" value={vehicle.id} />
-               
-               <div>
-                  <label className="block text-sm font-medium text-dark-300 mb-2">Jenis Servis *</label>
-                  <select id="service-type-select" name="type" required className="w-full px-4 py-2 bg-dark-900 border border-dark-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-dark-50 appearance-none">
-                     <option value="oil_change">Ganti Oli</option>
-                     <option value="general_service">Servis Berkala</option>
-                  </select>
-               </div>
-
-               {/* Menambahkan custom styling CSS via style element agar field merk oli bisa dimunculkan/disembunyikan otomatis tanpa react state */}
-               <style dangerouslySetInnerHTML={{__html: `
-                 #service-type-select:not(:has(option[value="oil_change"]:checked)) ~ #oil-brand-container {
-                    display: none;
-                 }
-               `}} />
-
-               <div id="oil-brand-container">
-                  <label className="block text-sm font-medium text-dark-300 mb-2">Merk Oli <span className="text-xs text-dark-500 font-normal">(opsional)</span></label>
-                  <input type="text" name="oilBrand" list="oil-brands" placeholder="Ketik atau pilih merk oli (cth: Motul, Shell, dll)" className="w-full px-4 py-2 bg-dark-900 border border-dark-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-dark-50" />
-                  <datalist id="oil-brands">
-                     {Array.from(new Set(oilIntervals.filter(o => o.vehicleType === 'all' || o.vehicleType === vehicle.type).map(o => o.brand))).map((brand, i) => (
-                        <option key={i} value={brand.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')} />
-                     ))}
-                  </datalist>
-               </div>
-
-               <div>
-                  <label className="block text-sm font-medium text-dark-300 mb-2">Tanggal *</label>
-                  <input type="date" name="serviceDate" required defaultValue={new Date().toISOString().split('T')[0]} className="w-full px-4 py-2 bg-dark-900 border border-dark-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-dark-50 [color-scheme:dark]" />
-               </div>
-
-               <div>
-                  <label className="block text-sm font-medium text-dark-300 mb-2">Kilometer Saat Ini *</label>
-                  <input type="number" name="kmAtService" required defaultValue={vehicle.currentKm} className="w-full px-4 py-2 bg-dark-900 border border-dark-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-dark-50 font-mono" />
-               </div>
-
-               <div>
-                  <label className="block text-sm font-medium text-dark-300 mb-2">Biaya (Rp)</label>
-                  <input type="number" name="cost" placeholder="0" className="w-full px-4 py-2 bg-dark-900 border border-dark-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-dark-50 font-mono" />
-               </div>
-
-               <div className="sm:col-span-2">
-                  <label className="block text-sm font-medium text-dark-300 mb-2">Catatan</label>
-                  <input type="text" name="notes" placeholder="Cth: Ganti oli gardan, kampas rem depan" className="w-full px-4 py-2 bg-dark-900 border border-dark-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 text-dark-50" />
-               </div>
-
-               <div className="sm:col-span-2 mt-2">
-                  <button type="submit" className="w-full py-3 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-medium transition-all shadow-lg shadow-brand-500/20">
-                    Simpan Riwayat
-                  </button>
-               </div>
-            </form>
+            <AddServiceForm 
+               vehicle={vehicle} 
+               oilBrands={Array.from(new Set(oilIntervals.filter(o => o.vehicleType === 'all' || o.vehicleType === vehicle.type).map(o => o.brand))).map(brand => brand.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '))}
+               action={addServiceRecord}
+            />
           </div>
 
           <div>

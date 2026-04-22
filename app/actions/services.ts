@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma'
 import { getSession } from '@/lib/auth'
 import { revalidatePath } from 'next/cache'
 
-export async function addServiceRecord(formData: FormData) {
+export async function addServiceRecord(prevState: any, formData: FormData) {
   const session = await getSession()
   if (!session) return { error: 'Unauthorized' }
 
@@ -29,6 +29,21 @@ export async function addServiceRecord(formData: FormData) {
     }
 
     const serviceDate = new Date(serviceDateStr)
+    
+    // Validasi Anti-Duplikat
+    const existingRecord = await prisma.serviceRecord.findFirst({
+      where: {
+        vehicleId,
+        type,
+        kmAtService,
+        serviceDate,
+        ...(type === 'oil_change' && oilBrand ? { oilBrand } : {})
+      }
+    })
+
+    if (existingRecord) {
+      return { error: 'Data riwayat servis yang sama persis sudah pernah ditambahkan.' }
+    }
     
     await prisma.serviceRecord.create({
       data: {
