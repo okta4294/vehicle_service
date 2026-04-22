@@ -34,7 +34,7 @@ export default async function Page() {
         </h1>
         
         <p className="text-lg text-dark-300 max-w-xl mx-auto font-medium leading-relaxed">
-          Jangan biarkan kendaraanmu rusak karena lupa servis. AutoCare membantu mencatat dan memberikan estimasi jadwal servis berikutnya secara otomatis.
+          Jangan biarkan kendaraanmu rusak karena lupa servis. AutoCare membantu mencatat dan memberikan estimasi jadwal servis berikutnya secara otomatis. (khusus Vixion ga usah servis gapapa)
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
