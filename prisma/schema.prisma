@@ -1,0 +1,52 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  password      String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  vehicles      Vehicle[]
+}
+
+model Vehicle {
+  id             String          @id @default(cuid())
+  userId         String
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type           String          // "motor" | "mobil"
+  brand          String
+  model          String
+  year           Int?
+  plateNumber    String?
+  currentKm      Int             @default(0)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  serviceRecords ServiceRecord[]
+
+  @@index([userId])
+}
+
+model ServiceRecord {
+  id              String    @id @default(cuid())
+  vehicleId       String
+  vehicle         Vehicle   @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  type            String    // "oil_change" | "general_service"
+  kmAtService     Int
+  serviceDate     DateTime
+  nextServiceKm   Int?
+  nextServiceDate DateTime?
+  oilBrand        String?   // Merk/tipe oli untuk rekomendasi KM selanjutnya
+  notes           String?
+  cost            Float?
+  createdAt       DateTime  @default(now())
+
+  @@index([vehicleId])
+}
