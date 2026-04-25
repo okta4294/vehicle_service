@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="id" className="dark">
       <body className={`${inter.variable} min-h-screen flex flex-col bg-dark-950 text-dark-50 selection:bg-brand-500/30`}>
         {children}
+        <SpeedInsights />
         <Toaster position="top-center" richColors theme="dark" />
       </body>
     </html>
