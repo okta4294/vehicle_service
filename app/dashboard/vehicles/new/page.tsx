@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+
 import Link from 'next/link'
 import { createVehicle } from '@/app/actions/vehicles'
 
 export default function NewVehiclePage() {
-  const router = useRouter()
+
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 

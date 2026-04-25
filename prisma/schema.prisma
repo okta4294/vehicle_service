@@ -50,3 +50,30 @@ model ServiceRecord {
 
   @@index([vehicleId])
 }
+
+model ServiceInterval {
+  id                    String   @id @default(cuid())
+  brand                 String
+  type                  String   // "motor" | "mobil"
+  oilChangeKm           Int
+  oilChangeMonths       Int
+  generalServiceKm      Int
+  generalServiceMonths  Int
+  notes                 String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@unique([brand, type])
+}
+
+model OilInterval {
+  id              String   @id @default(cuid())
+  brand           String
+  vehicleType     String   // "motor" | "mobil" | "all"
+  oilChangeKm     Int
+  oilChangeMonths Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([brand, vehicleType])
+}

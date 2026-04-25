@@ -47,8 +47,8 @@ export default async function DashboardPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {vehicles.map((v) => {
-            const recommendation = getServiceRecommendation(v.brand, v.type as 'motor' | 'mobil')
+          {await Promise.all(vehicles.map(async (v) => {
+            const recommendation = await getServiceRecommendation(v.brand, v.type as 'motor' | 'mobil')
             const latestService = v.serviceRecords[0]
             
             let status = { text: 'Belum ada data servis', color: 'text-dark-400', bg: 'bg-dark-800' }
@@ -116,7 +116,7 @@ export default async function DashboardPage() {
                 </div>
               </Link>
             )
-          })}
+          }))}
         </div>
       )}
     </div>

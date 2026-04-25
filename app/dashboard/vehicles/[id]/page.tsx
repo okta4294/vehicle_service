@@ -2,7 +2,7 @@ import { getSession } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { getServiceRecommendation, calculateNextService, getOilRecommendation, oilIntervals } from '@/lib/service-intervals'
+import { getServiceRecommendation, calculateNextService, getOilRecommendation, getAllOilBrands } from '@/lib/service-intervals'
 import { updateKilometer, deleteVehicle } from '@/app/actions/vehicles'
 import { addServiceRecord, deleteServiceRecord } from '@/app/actions/services'
 import { AddServiceForm } from './AddServiceForm'
@@ -26,8 +26,14 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
     redirect('/dashboard')
   }
 
-  const recommendation = getServiceRecommendation(vehicle.brand, vehicle.type as 'motor' | 'mobil')
+  const recommendation = await getServiceRecommendation(vehicle.brand, vehicle.type as 'motor' | 'mobil')
   const latestService = vehicle.serviceRecords[0]
+  
+  const oilBrands = await getAllOilBrands(vehicle.type as 'motor' | 'mobil');
+
+  // Need to await oil recommendations if we have a last oil service
+  const lastOil = vehicle.serviceRecords.find(r => r.type === 'oil_change') || latestService;
+  const specificOilRecommendation = lastOil && lastOil.oilBrand ? await getOilRecommendation(lastOil.oilBrand, vehicle.type as 'motor' | 'mobil') : null;
 
   return (
     <div className="space-y-8">
@@ -89,20 +95,16 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
               <div className="space-y-6">
                 {/* Oil Change */}
                 {(() => {
-                  const lastOil = vehicle.serviceRecords.find(r => r.type === 'oil_change') || latestService
-                  
-                  // Menggunakan Rekomendasi Oli berdasarkan input terakhir (bila ada)
-                  const specificOilRecommendation = getOilRecommendation(lastOil.oilBrand, vehicle.type as 'motor' | 'mobil')
                   const finalOilKm = specificOilRecommendation ? specificOilRecommendation.oilChangeKm : recommendation.oilChangeKm
                   const finalOilMonths = specificOilRecommendation ? specificOilRecommendation.oilChangeMonths : recommendation.oilChangeMonths
                   
-                  const calc = calculateNextService(vehicle.currentKm, lastOil.kmAtService, lastOil.serviceDate, finalOilKm, finalOilMonths)
+                  const calc = calculateNextService(vehicle.currentKm, lastOil!.kmAtService, lastOil!.serviceDate, finalOilKm, finalOilMonths)
                   
                   return (
                     <div>
                       <div className="flex justify-between items-center mb-2">
                         <span className="text-sm font-medium text-dark-300">
-                           Ganti Oli Berikutnya {lastOil.oilBrand ? <span className="text-[10px] bg-dark-800 px-2 py-0.5 rounded-full ml-1 text-brand-300 border border-dark-700">{lastOil.oilBrand}</span> : null}
+                           Ganti Oli Berikutnya {lastOil!.oilBrand ? <span className="text-[10px] bg-dark-800 px-2 py-0.5 rounded-full ml-1 text-brand-300 border border-dark-700">{lastOil!.oilBrand}</span> : null}
                         </span>
                         {calc.isOverdue ? (
                           <span className="text-xs font-bold text-red-400 bg-red-400/10 px-2 py-0.5 rounded">Segera Ganti</span>
@@ -113,7 +115,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
                         )}
                       </div>
                       <div className="w-full bg-dark-900 rounded-full h-2 overflow-hidden border border-dark-800">
-                        <div className={`h-full ${calc.isOverdue ? 'bg-red-500' : calc.isWarning ? 'bg-accent-500' : 'bg-green-500'}`} style={{ width: `${Math.min(100, ((vehicle.currentKm - lastOil.kmAtService) / finalOilKm) * 100)}%`}}></div>
+                        <div className={`h-full ${calc.isOverdue ? 'bg-red-500' : calc.isWarning ? 'bg-accent-500' : 'bg-green-500'}`} style={{ width: `${Math.min(100, ((vehicle.currentKm - lastOil!.kmAtService) / finalOilKm) * 100)}%`}}></div>
                       </div>
                       <p className="text-xs text-dark-500 mt-2">Target: {calc.nextKm.toLocaleString('id-ID')} km atau {(calc.nextDate).toLocaleDateString('id-ID', { month: 'short', year: 'numeric'})}</p>
                     </div>
@@ -159,7 +161,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
             <h3 className="text-xl font-bold text-dark-50 mb-6">Tambah Riwayat Servis</h3>
             <AddServiceForm 
                vehicle={vehicle} 
-               oilBrands={Array.from(new Set(oilIntervals.filter(o => o.vehicleType === 'all' || o.vehicleType === vehicle.type).map(o => o.brand))).map(brand => brand.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '))}
+               oilBrands={oilBrands.map(brand => brand.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '))}
                action={addServiceRecord}
             />
           </div>
