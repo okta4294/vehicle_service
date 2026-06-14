@@ -3,6 +3,7 @@
 import { useActionState, useState } from 'react'
 import { login, register } from '@/app/actions/auth'
 import Link from 'next/link'
+import ThemeToggle from '@/components/ThemeToggle'
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true)
@@ -20,10 +21,18 @@ export default function LoginPage() {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik02MCAwaC0xdjYwaDFWMHptLTIgMGgtMXY2MGgxVjB6TTAgNTloNjB2MWgtNjB2LTF6TTAgNTdoNjB2MWgtNjB2LTF6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz48L2c+PC9zdmc+')] opacity-20" style={{ maskImage: "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))", WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))" }}></div>
       </div>
       
+      {/* Back Button */}
+      <div className="absolute top-6 left-6 z-50">
+        <Link href="/" className="flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-on-surface-variant hover:text-primary hover:bg-white/5 hover:shadow-[0_0_15px_rgba(76,215,246,0.2)] transition-all group">
+          <span className="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+          <span className="font-label-caps text-label-caps hidden sm:block">Kembali</span>
+        </Link>
+      </div>
+
       {/* Theme Toggle */}
-      <button aria-label="Toggle Theme" className="absolute top-container-padding right-container-padding z-50 p-3 rounded-full glass-panel hover:bg-white/5 transition-colors group">
-        <span className="material-symbols-outlined text-primary group-hover:text-primary-fixed transition-colors" style={{ fontVariationSettings: "'FILL' 0" }}>dark_mode</span>
-      </button>
+      <div className="absolute top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
 
       {/* Main Login Container */}
       <main className="relative z-10 w-full max-w-[480px] px-container-padding">

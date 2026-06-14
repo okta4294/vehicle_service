@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import { logout } from '@/app/actions/auth'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -59,7 +60,7 @@ export default function Navigation() {
           </Link>
         </div>
         <div className="border-t border-white/5 pt-4 flex flex-col gap-2 w-full px-2 mt-auto shrink-0">
-          <form action="/api/auth/logout" method="POST" className="w-full">
+          <form action={logout} className="w-full">
             <button type="submit" className="flex items-center w-full px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-all duration-300">
               <span className="material-symbols-outlined shrink-0">logout</span>
               <span className={`ml-4 font-label-caps text-label-caps transition-opacity duration-300 whitespace-nowrap ${isOpen ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'}`}>Logout</span>
