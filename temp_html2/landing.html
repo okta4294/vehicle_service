@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoCare - Pantau Servis Lebih Mudah</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#690005",
+                    "error": "#ffb4ab",
+                    "primary-fixed-dim": "#4cd7f6",
+                    "surface-container-low": "#151b2d",
+                    "surface-container-highest": "#2e3447",
+                    "outline": "#869397",
+                    "on-surface-variant": "#bcc9cd",
+                    "outline-variant": "#3d494c",
+                    "surface-dim": "#0c1324",
+                    "surface-variant": "#2e3447",
+                    "secondary-fixed": "#e9ddff",
+                    "on-secondary-fixed": "#23005c",
+                    "on-error-container": "#ffdad6",
+                    "on-background": "#dce1fb",
+                    "background": "#0c1324",
+                    "secondary-container": "#571bc1",
+                    "on-tertiary-container": "#5b3200",
+                    "inverse-on-surface": "#2a3043",
+                    "tertiary-fixed": "#ffdcbf",
+                    "primary-container": "#06b6d4",
+                    "on-secondary": "#3c0091",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "tertiary-fixed-dim": "#ffb873",
+                    "surface-container-high": "#23293c",
+                    "primary": "#4cd7f6",
+                    "inverse-primary": "#00687a",
+                    "on-tertiary": "#4b2800",
+                    "on-tertiary-fixed": "#2d1600",
+                    "on-primary-fixed-variant": "#004e5c",
+                    "on-primary-container": "#00424f",
+                    "surface-tint": "#4cd7f6",
+                    "tertiary": "#ffb873",
+                    "on-primary-fixed": "#001f26",
+                    "surface-container-lowest": "#070d1f",
+                    "surface": "#0c1324",
+                    "on-tertiary-fixed-variant": "#6a3b00",
+                    "tertiary-container": "#e89337",
+                    "on-secondary-container": "#c4abff",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-primary": "#003640",
+                    "surface-bright": "#33394c",
+                    "inverse-surface": "#dce1fb",
+                    "surface-container": "#191f31",
+                    "primary-fixed": "#acedff",
+                    "on-surface": "#dce1fb",
+                    "secondary": "#d0bcff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "container-padding": "24px",
+                    "glass-padding": "20px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "display-lg": [
+                            "Sora"
+                    ],
+                    "label-caps": [
+                            "JetBrains Mono"
+                    ],
+                    "display-lg-mobile": [
+                            "Sora"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Sora"
+                    ]
+            },
+            "fontSize": {
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "letterSpacing": "0",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "letterSpacing": "0",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "letterSpacing": "0.03em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(21, 27, 45, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid transparent;
+            border-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.02)) 1;
+        }
+        .neon-glow {
+            text-shadow: 0 0 15px rgba(76, 215, 246, 0.5), 0 0 30px rgba(76, 215, 246, 0.3);
+        }
+        .button-glow:hover {
+            box-shadow: 0 0 30px rgba(76, 215, 246, 0.4);
+        }
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md bg-grid-pattern min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding py-4 bg-transparent backdrop-blur-xl border-b border-white/10">
+<div class="flex items-center gap-4">
+<img alt="AutoCare Logo" class="h-10 w-10 rounded-full border border-white/20" src="https://lh3.googleusercontent.com/aida/AP1WRLuOi-fKT5G3ETKsEt4RFHebcQw6PqvDMD5QMTawKTH1A2XM9z1a3YaVXpfYo5zIBPjkpEaqdyIJ2Ykn2yqD1SaGpHiMsY4Il4O14JqY61Bjc5GljCSb8h3kMJh5XNeLsQqkO81DgbJc-BZxgXLcfLn0WynuFuMKeoog2EELfVd55N0EeCEuYHXM8aJ7kbmZxnbwL5oornidPs7FA7uPdC7Xu71O48Q1i0DU8rtvZzVOh85ef-pLeQEpXJA"/>
+<span class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary drop-shadow-[0_0_15px_rgba(76,215,246,0.5)]">AutoCare</span>
+</div>
+<div class="hidden md:flex items-center gap-8 font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-all scale-95 active:scale-90" href="#">Features</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-all scale-95 active:scale-90" href="#">Pricing</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:opacity-80 transition-all scale-95 active:scale-90" href="#">Support</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex text-on-surface-variant hover:text-primary transition-colors scale-95 active:scale-90 transition-transform font-body-md text-body-md">Login</button>
+<button class="bg-gradient-to-r from-primary to-secondary text-on-primary px-6 py-2 rounded-full font-label-caps text-label-caps hover:opacity-90 button-glow transition-all scale-95 active:scale-90 font-bold tracking-widest">Get Started</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-24 px-container-padding md:px-12 flex flex-col items-center justify-center relative z-10">
+<!-- Hero Section -->
+<div class="max-w-4xl mx-auto text-center mb-24 relative">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/20 rounded-full blur-[100px] -z-10"></div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6 neon-glow tracking-tight leading-tight">
+                Pantau Servis <br/><span class="text-primary">Lebih Mudah</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">
+                Advanced telemetry and predictive maintenance for the modern automotive enthusiast. Experience a phantom interface that anticipates your vehicle's needs.
+            </p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+<button class="bg-gradient-to-r from-primary to-secondary text-on-primary px-8 py-4 rounded-full font-label-caps text-label-caps hover:opacity-90 button-glow transition-all scale-95 active:scale-90 font-bold tracking-widest w-full sm:w-auto">
+                    CONNECT VEHICLE
+                </button>
+<button class="border border-white/20 bg-white/5 backdrop-blur-md text-on-surface px-8 py-4 rounded-full font-label-caps text-label-caps hover:bg-white/10 hover:border-white/40 transition-all scale-95 active:scale-90 tracking-widest w-full sm:w-auto">
+                    EXPLORE DEMO
+                </button>
+</div>
+</div>
+<!-- Features Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full max-w-6xl mx-auto">
+<!-- Feature 1 -->
+<div class="glass-panel rounded-xl p-8 md:col-span-8 flex flex-col justify-end min-h-[300px] relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent z-10"></div>
+<!-- Abstract decorative element -->
+<div class="absolute top-8 right-8 w-32 h-32 border border-primary/30 rounded-full opacity-50 group-hover:scale-110 transition-transform duration-700"></div>
+<div class="absolute top-16 right-16 w-16 h-16 border border-secondary/30 rounded-full opacity-50 group-hover:-rotate-45 transition-transform duration-700"></div>
+<div class="relative z-20">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 border border-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="speed" data-weight="fill" style="font-variation-settings: 'FILL' 1;">speed</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Real-Time Telemetry</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">Live streaming data from your ECU. Monitor pressure, temperature, and RPM with zero latency in a high-fidelity HUD.</p>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="glass-panel rounded-xl p-8 md:col-span-4 flex flex-col justify-end min-h-[300px] relative overflow-hidden">
+<div class="relative z-20">
+<div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-4 border border-secondary/20">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome" data-weight="fill" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Predictive AI</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Machine learning models forecast component wear before failure.</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="glass-panel rounded-xl p-8 md:col-span-4 flex flex-col justify-end min-h-[300px] relative overflow-hidden">
+<div class="relative z-20">
+<div class="w-12 h-12 rounded-full bg-tertiary/10 flex items-center justify-center mb-4 border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary" data-icon="history" data-weight="fill" style="font-variation-settings: 'FILL' 1;">history</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Service History</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Immutable, blockchain-verified maintenance logs.</p>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="glass-panel rounded-xl p-8 md:col-span-8 flex flex-col justify-center items-center min-h-[300px] relative overflow-hidden text-center group border-primary/30 hover:border-primary/60 transition-colors duration-500">
+<div class="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors duration-500"></div>
+<div class="relative z-20 flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-6 opacity-80 group-hover:opacity-100 transition-opacity" data-icon="satellite_alt" data-weight="fill" style="font-variation-settings: 'FILL' 1;">satellite_alt</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Global Network Sync</h3>
+<button class="bg-white/10 hover:bg-white/20 text-on-surface px-6 py-2 rounded-full border border-white/20 font-label-caps text-label-caps transition-all tracking-widest backdrop-blur-md">
+                        VIEW COVERAGE
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-unit px-container-padding flex flex-col md:flex-row justify-between items-center bg-surface-container-lowest border-t border-white/5 mt-auto relative z-20">
+<div class="font-label-caps text-label-caps text-primary mb-4 md:mb-0">
+            AutoCare Phantom Systems
+        </div>
+<div class="text-secondary font-body-md text-body-md text-center md:text-left mb-4 md:mb-0">
+            © 2024 AutoCare Phantom Systems. All rights reserved.
+        </div>
+<div class="flex gap-6 font-body-md text-body-md text-on-surface-variant">
+<a class="hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">API Docs</a>
+</div>
+</footer>
+</body></html>

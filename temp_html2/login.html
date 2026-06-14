@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoCare - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Sora:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Phantom Glass Styling */
+        .glass-panel {
+            background: rgba(46, 52, 71, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .ambient-glow {
+            box-shadow: 0 0 80px 20px rgba(76, 215, 246, 0.15);
+        }
+
+        .input-glass {
+            background: rgba(12, 19, 36, 0.6);
+            border: 1px solid rgba(134, 147, 151, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .input-glass:focus-within {
+            border-color: rgba(76, 215, 246, 0.8);
+            box-shadow: 0 0 15px rgba(76, 215, 246, 0.3);
+            background: rgba(12, 19, 36, 0.8);
+        }
+
+        .btn-primary-gradient {
+            background: linear-gradient(135deg, #4cd7f6 0%, #06b6d4 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-gradient:hover {
+            box-shadow: 0 0 20px rgba(76, 215, 246, 0.4);
+            transform: translateY(-1px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error": "#690005",
+                      "error": "#ffb4ab",
+                      "primary-fixed-dim": "#4cd7f6",
+                      "surface-container-low": "#151b2d",
+                      "surface-container-highest": "#2e3447",
+                      "outline": "#869397",
+                      "on-surface-variant": "#bcc9cd",
+                      "outline-variant": "#3d494c",
+                      "surface-dim": "#0c1324",
+                      "surface-variant": "#2e3447",
+                      "secondary-fixed": "#e9ddff",
+                      "on-secondary-fixed": "#23005c",
+                      "on-error-container": "#ffdad6",
+                      "on-background": "#dce1fb",
+                      "background": "#0c1324",
+                      "secondary-container": "#571bc1",
+                      "on-tertiary-container": "#5b3200",
+                      "inverse-on-surface": "#2a3043",
+                      "tertiary-fixed": "#ffdcbf",
+                      "primary-container": "#06b6d4",
+                      "on-secondary": "#3c0091",
+                      "error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#5516be",
+                      "tertiary-fixed-dim": "#ffb873",
+                      "surface-container-high": "#23293c",
+                      "primary": "#4cd7f6",
+                      "inverse-primary": "#00687a",
+                      "on-tertiary": "#4b2800",
+                      "on-tertiary-fixed": "#2d1600",
+                      "on-primary-fixed-variant": "#004e5c",
+                      "on-primary-container": "#00424f",
+                      "surface-tint": "#4cd7f6",
+                      "tertiary": "#ffb873",
+                      "on-primary-fixed": "#001f26",
+                      "surface-container-lowest": "#070d1f",
+                      "surface": "#0c1324",
+                      "on-tertiary-fixed-variant": "#6a3b00",
+                      "tertiary-container": "#e89337",
+                      "on-secondary-container": "#c4abff",
+                      "secondary-fixed-dim": "#d0bcff",
+                      "on-primary": "#003640",
+                      "surface-bright": "#33394c",
+                      "inverse-surface": "#dce1fb",
+                      "surface-container": "#191f31",
+                      "primary-fixed": "#acedff",
+                      "on-surface": "#dce1fb",
+                      "secondary": "#d0bcff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "container-padding": "24px",
+                      "glass-padding": "20px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Sora"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg-mobile": [
+                              "Sora"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Sora"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "letterSpacing": "0.03em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col items-center justify-center relative overflow-hidden font-body-md text-body-md selection:bg-primary/30 selection:text-primary-fixed">
+<!-- Ambient Background Ethereal Glows -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center">
+<div class="absolute w-[600px] h-[600px] rounded-full bg-primary/10 blur-[100px] opacity-60 mix-blend-screen translate-x-1/4 -translate-y-1/4"></div>
+<div class="absolute w-[800px] h-[800px] rounded-full bg-secondary-container/10 blur-[120px] opacity-40 mix-blend-screen -translate-x-1/4 translate-y-1/4"></div>
+<!-- Subtle Grid Overlay -->
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik02MCAwaC0xdjYwaDFWMHptLTIgMGgtMXY2MGgxVjB6TTAgNTloNjB2MWgtNjB2LTF6TTAgNTdoNjB2MWgtNjB2LTF6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz48L2c+PC9zdmc+')] opacity-20 mask-image:linear-gradient(to_bottom,rgba(0,0,0,1),rgba(0,0,0,0))]"></div>
+</div>
+<!-- Theme Toggle -->
+<button aria-label="Toggle Theme" class="absolute top-container-padding right-container-padding z-50 p-3 rounded-full glass-panel hover:bg-white/5 transition-colors group">
+<span class="material-symbols-outlined text-primary group-hover:text-primary-fixed transition-colors" data-icon="dark_mode">dark_mode</span>
+</button>
+<!-- Main Login Container -->
+<main class="relative z-10 w-full max-w-[480px] px-container-padding">
+<!-- Glass Card -->
+<div class="glass-panel rounded-xl p-8 md:p-12 ambient-glow relative overflow-hidden flex flex-col items-center">
+<!-- Diagonal Light Sweep Effect inside card -->
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+<!-- Header Section -->
+<div class="w-full text-center mb-10 flex flex-col items-center">
+<div class="w-24 h-24 mb-6 rounded-full glass-panel p-2 shadow-[0_0_30px_rgba(76,215,246,0.2)]">
+<img alt="AutoCare Logo" class="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida/AP1WRLuOi-fKT5G3ETKsEt4RFHebcQw6PqvDMD5QMTawKTH1A2XM9z1a3YaVXpfYo5zIBPjkpEaqdyIJ2Ykn2yqD1SaGpHiMsY4Il4O14JqY61Bjc5GljCSb8h3kMJh5XNeLsQqkO81DgbJc-BZxgXLcfLn0WynuFuMKeoog2EELfVd55N0EeCEuYHXM8aJ7kbmZxnbwL5oornidPs7FA7uPdC7Xu71O48Q1i0DU8rtvZzVOh85ef-pLeQEpXJA"/>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2 tracking-tight">
+                    Selamat Datang
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px] mx-auto">
+                    Akses dashboard AutoCare Anda untuk pemantauan sistem.
+                </p>
+</div>
+<!-- Login Form -->
+<form action="#" class="w-full space-y-6">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="block font-label-caps text-label-caps text-primary uppercase tracking-widest pl-1" for="email">
+                        Email Address
+                    </label>
+<div class="relative input-glass rounded-DEFAULT flex items-center px-4 py-3 group">
+<span class="material-symbols-outlined text-outline group-focus-within:text-primary mr-3 transition-colors text-lg" data-icon="mail">mail</span>
+<input class="bg-transparent border-none w-full text-on-surface font-body-md focus:ring-0 placeholder:text-outline/50 p-0" id="email" name="email" placeholder="admin@autocare.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center pl-1">
+<label class="block font-label-caps text-label-caps text-primary uppercase tracking-widest" for="password">
+                            Password
+                        </label>
+<a class="font-label-caps text-[10px] text-primary/70 hover:text-primary transition-colors tracking-wider" href="#">
+                            Lupa Password?
+                        </a>
+</div>
+<div class="relative input-glass rounded-DEFAULT flex items-center px-4 py-3 group">
+<span class="material-symbols-outlined text-outline group-focus-within:text-primary mr-3 transition-colors text-lg" data-icon="lock">lock</span>
+<input class="bg-transparent border-none w-full text-on-surface font-body-md focus:ring-0 placeholder:text-outline/50 p-0 tracking-widest" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button aria-label="Toggle password visibility" class="ml-3 text-outline hover:text-on-surface transition-colors focus:outline-none" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Action Area -->
+<div class="pt-4">
+<button class="w-full btn-primary-gradient rounded-full py-4 px-6 font-body-lg text-body-lg font-semibold text-on-primary flex items-center justify-center gap-2 group shadow-[0_4px_14px_0_rgba(76,215,246,0.39)]" type="submit">
+<span>Masuk</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Footer Links -->
+<div class="mt-8 text-center">
+<p class="font-label-caps text-label-caps text-on-surface-variant">
+                    Sistem Operasi Phantom <span class="text-primary/50 mx-2">|</span> v2.4.1
+                </p>
+</div>
+</div>
+</main>
+<!-- Shared Footer from JSON (Contextual adaptation: Minimal version for Login) -->
+<footer class="absolute bottom-0 w-full py-unit px-container-padding flex flex-col md:flex-row justify-between items-center bg-surface-container-lowest/50 backdrop-blur-md border-t border-white/5 z-10">
+<div class="font-label-caps text-label-caps text-primary mb-2 md:mb-0">
+            AUTOCARE PHANTOM
+        </div>
+<div class="font-body-md text-body-md text-on-surface-variant text-sm">
+            © 2024 AutoCare Phantom Systems. All rights reserved.
+        </div>
+<div class="flex gap-4 mt-2 md:mt-0 font-body-md text-body-md text-sm">
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+</div>
+</footer>
+</body></html>

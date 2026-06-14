@@ -1,21 +1,16 @@
-import { getSession } from '@/lib/auth'
-import { redirect } from 'next/navigation'
-import { Navbar } from '@/app/components/Navbar'
+import Link from 'next/link'
+import Navigation from '@/components/Navigation'
 
-export default async function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const session = await getSession()
-  if (!session) redirect('/login')
-
-  return (
-    <div className="min-h-screen bg-dark-950">
-      <Navbar userName={session.name} />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {children}
-      </div>
-    </div>
-  )
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <div className="bg-background min-h-screen flex flex-col md:flex-row relative">
+            {/* Decorative Background Grid */}
+            <div className="fixed inset-0 z-0 pointer-events-none bg-grid-pattern opacity-50"></div>
+            <div className="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[120px] z-0 pointer-events-none"></div>
+            
+            <Navigation />
+            
+            {children}
+        </div>
+    )
 }
