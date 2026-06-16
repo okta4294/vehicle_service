@@ -15,8 +15,10 @@ export async function addServiceRecord(prevState: any, formData: FormData) {
   const notes = formData.get('notes') as string
   const cost = parseFloat(formData.get('cost') as string) || 0
   
-  // Merk oli bersifat opsional (hanya untuk oil_change)
+  // Merk oli dan interval spesifik bersifat opsional (hanya untuk oil_change)
   const oilBrand = formData.get('oilBrand') as string | null
+  const nextServiceIntervalRaw = formData.get('nextServiceInterval') as string | null
+  const nextServiceInterval = nextServiceIntervalRaw ? parseInt(nextServiceIntervalRaw) : null
 
   if (!vehicleId || !type || !kmAtService || !serviceDateStr) {
     return { error: 'Semua field dengan tanda bintang (*) wajib diisi.' }
@@ -45,12 +47,17 @@ export async function addServiceRecord(prevState: any, formData: FormData) {
       return { error: 'Data riwayat servis yang sama persis sudah pernah ditambahkan.' }
     }
     
+    const nextServiceKm = (type === 'oil_change' && nextServiceInterval) 
+        ? kmAtService + nextServiceInterval 
+        : null
+
     await prisma.serviceRecord.create({
       data: {
         vehicleId,
         type,
         kmAtService,
         serviceDate,
+        nextServiceKm,
         oilBrand: type === 'oil_change' && oilBrand ? oilBrand : null, // simpan hanya jika ganti oli
         notes,
         cost,

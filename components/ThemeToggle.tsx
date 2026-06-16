@@ -15,7 +15,7 @@ export default function ThemeToggle() {
   if (!mounted) {
     return (
       <button className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-on-surface hover:text-primary transition-all">
-        <span className="material-symbols-outlined">light_mode</span>
+        <i className="fa-solid fa-sun"></i>
       </button>
     )
   }
@@ -28,9 +28,7 @@ export default function ThemeToggle() {
       className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-on-surface hover:text-primary hover:shadow-[0_0_15px_rgba(76,215,246,0.3)] transition-all"
       aria-label="Toggle Dark Mode"
     >
-      <span className="material-symbols-outlined">
-        {currentTheme === 'dark' ? 'light_mode' : 'dark_mode'}
-      </span>
+      <i className={`fa-solid ${currentTheme === 'dark' ? 'fa-sun' : 'fa-moon'}`}></i>
     </button>
   )
 }

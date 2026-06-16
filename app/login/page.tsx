@@ -24,7 +24,7 @@ export default function LoginPage() {
       {/* Back Button */}
       <div className="absolute top-6 left-6 z-50">
         <Link href="/" className="flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-on-surface-variant hover:text-primary hover:bg-white/5 hover:shadow-[0_0_15px_rgba(76,215,246,0.2)] transition-all group">
-          <span className="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+          <i className="fa-solid fa-arrow-left text-lg group-hover:-translate-x-1 transition-transform"></i>
           <span className="font-label-caps text-label-caps hidden sm:block">Kembali</span>
         </Link>
       </div>
@@ -62,7 +62,7 @@ export default function LoginPage() {
                         Nama Lengkap
                     </label>
                     <div className="relative glass-input rounded-xl flex items-center px-4 py-3 group">
-                        <span className="material-symbols-outlined text-outline group-focus-within:text-primary mr-3 transition-colors text-lg" style={{ fontVariationSettings: "'FILL' 0" }}>person</span>
+                        <i className="fa-solid fa-user text-outline group-focus-within:text-primary mr-3 transition-colors text-lg"></i>
                         <input className="bg-transparent border-none w-full text-on-surface font-body-md focus:ring-0 placeholder:text-outline/50 p-0" id="name" name="name" placeholder="Nama Lengkap" required={!isLogin} type="text"/>
                     </div>
                     {!isLogin && registerState?.errors?.name && <p className="text-error text-xs mt-1 pl-1">{registerState.errors.name}</p>}
@@ -75,7 +75,7 @@ export default function LoginPage() {
                 Email Address
               </label>
               <div className="relative glass-input rounded-xl flex items-center px-4 py-3 group">
-                <span className="material-symbols-outlined text-outline group-focus-within:text-primary mr-3 transition-colors text-lg" style={{ fontVariationSettings: "'FILL' 0" }}>mail</span>
+                <i className="fa-solid fa-envelope text-outline group-focus-within:text-primary mr-3 transition-colors text-lg"></i>
                 <input className="bg-transparent border-none w-full text-on-surface font-body-md focus:ring-0 placeholder:text-outline/50 p-0" id="email" name="email" placeholder="admin@autocare.com" required type="email"/>
               </div>
               {isLogin && loginState?.errors?.email && <p className="text-error text-xs mt-1 pl-1">{loginState.errors.email}</p>}
@@ -95,10 +95,10 @@ export default function LoginPage() {
                 )}
               </div>
               <div className="relative glass-input rounded-xl flex items-center px-4 py-3 group">
-                <span className="material-symbols-outlined text-outline group-focus-within:text-primary mr-3 transition-colors text-lg" style={{ fontVariationSettings: "'FILL' 0" }}>lock</span>
+                <i className="fa-solid fa-lock text-outline group-focus-within:text-primary mr-3 transition-colors text-lg"></i>
                 <input className="bg-transparent border-none w-full text-on-surface font-body-md focus:ring-0 placeholder:text-outline/50 p-0 tracking-widest" id="password" name="password" placeholder="••••••••" required type={showPassword ? 'text' : 'password'}/>
                 <button onClick={() => setShowPassword(!showPassword)} aria-label="Toggle password visibility" className="ml-3 text-outline hover:text-on-surface transition-colors focus:outline-none" type="button">
-                  <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 0" }}>{showPassword ? 'visibility_off' : 'visibility'}</span>
+                  <i className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'} text-lg`}></i>
                 </button>
               </div>
               {isLogin && loginState?.errors?.password && <p className="text-error text-xs mt-1 pl-1">{loginState.errors.password}</p>}
@@ -111,7 +111,7 @@ export default function LoginPage() {
                         Konfirmasi Password
                     </label>
                     <div className="relative glass-input rounded-xl flex items-center px-4 py-3 group">
-                        <span className="material-symbols-outlined text-outline group-focus-within:text-primary mr-3 transition-colors text-lg" style={{ fontVariationSettings: "'FILL' 0" }}>lock</span>
+                        <i className="fa-solid fa-lock text-outline group-focus-within:text-primary mr-3 transition-colors text-lg"></i>
                         <input className="bg-transparent border-none w-full text-on-surface font-body-md focus:ring-0 placeholder:text-outline/50 p-0 tracking-widest" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required={!isLogin} type={showPassword ? 'text' : 'password'}/>
                     </div>
                     {!isLogin && registerState?.errors?.confirmPassword && <p className="text-error text-xs mt-1 pl-1">{registerState.errors.confirmPassword}</p>}
@@ -130,7 +130,7 @@ export default function LoginPage() {
                 ) : (
                     <>
                         <span>{isLogin ? 'Masuk' : 'Daftar'}</span>
-                        <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform" style={{ fontVariationSettings: "'FILL' 0" }}>arrow_forward</span>
+                        <i className="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                     </>
                 )}
               </button>

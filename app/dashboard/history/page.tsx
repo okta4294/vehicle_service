@@ -24,7 +24,7 @@ export default async function HistoryPage() {
                 <div className="glass-panel rounded-xl p-6">
                     {history.length === 0 ? (
                         <div className="text-center py-12 text-on-surface-variant">
-                            <span className="material-symbols-outlined text-6xl opacity-20 mb-4 block" style={{ fontVariationSettings: "'FILL' 0" }}>history</span>
+                            <i className="fa-solid fa-clock-rotate-left text-6xl opacity-20 mb-4 block"></i>
                             Belum ada riwayat servis yang dicatat.
                         </div>
                     ) : (
@@ -35,9 +35,7 @@ export default async function HistoryPage() {
                                         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                                         <div className="flex items-start gap-4 relative z-10">
                                             <div className="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors shrink-0 border border-white/5">
-                                                <span className="material-symbols-outlined text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>
-                                                    {record.type === 'oil_change' ? 'oil_barrel' : record.type === 'servis_rutin' ? 'settings' : 'build'}
-                                                </span>
+                                                <i className={`fa-solid ${record.type === 'oil_change' ? 'fa-oil-can' : record.type === 'servis_rutin' ? 'fa-gear' : 'fa-wrench'} text-2xl`}></i>
                                             </div>
                                             <div>
                                                 <div className="flex items-center gap-2 mb-1">

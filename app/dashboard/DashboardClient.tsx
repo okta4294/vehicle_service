@@ -31,34 +31,34 @@ export default function DashboardPage() {
 {/*  Dashboard  */}
 <li className="">
 <a className="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all ease-in-out duration-300 whitespace-nowrap font-label-caps text-label-caps" href="#">
-<span className="material-symbols-outlined text-2xl shrink-0">dashboard</span>
+<i className="fa-solid fa-table-columns text-2xl shrink-0"></i>
 <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out tracking-[0.1em]">Dashboard</span>
 </a>
 </li>
 {/*  Garage (Active State)  */}
 <li className="relative">
 <a className="flex items-center px-4 py-3 bg-primary/10 text-primary border-l-4 border-primary shadow-[0_0_20px_rgba(76,215,246,0.3)] transition-all ease-in-out duration-300 whitespace-nowrap font-label-caps text-label-caps" href="#">
-<span className="material-symbols-outlined text-2xl shrink-0 drop-shadow-[0_0_8px_rgba(76,215,246,0.4)]" style={{ fontVariationSettings: '&quot' }}>directions_car</span>
+<i className="fa-solid fa-car text-2xl shrink-0 drop-shadow-[0_0_8px_rgba(76,215,246,0.4)]"></i>
 <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out tracking-[0.1em] font-bold">Garage</span>
 </a>
 </li>
 {/*  History  */}
 <li className="">
 <a className="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all ease-in-out duration-300 whitespace-nowrap font-label-caps text-label-caps" href="#">
-<span className="material-symbols-outlined text-2xl shrink-0">history</span>
+<i className="fa-solid fa-clock-rotate-left text-2xl shrink-0"></i>
 <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out tracking-[0.1em]">History</span>
 </a>
 </li>
 {/*  Settings  */}
 <li className="">
 <a className="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all ease-in-out duration-300 whitespace-nowrap font-label-caps text-label-caps" href="#">
-<span className="material-symbols-outlined text-2xl shrink-0">settings</span>
+<i className="fa-solid fa-gear text-2xl shrink-0"></i>
 <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out tracking-[0.1em]">Settings</span>
 </a>
 </li>
 </ul>
 {/*  Footer / CTA  */}
-<div className="mt-auto flex flex-col gap-2"><li className=""><button className="flex items-center w-full px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all ease-in-out duration-300 whitespace-nowrap font-label-caps text-label-caps"><span className="material-symbols-outlined text-2xl shrink-0">dark_mode</span><span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out tracking-[0.1em]">Toggle Theme</span></button></li>
+<div className="mt-auto flex flex-col gap-2"><li className=""><button className="flex items-center w-full px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-white/5 transition-all ease-in-out duration-300 whitespace-nowrap font-label-caps text-label-caps"><i className="fa-solid fa-moon text-2xl shrink-0"></i><span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out tracking-[0.1em]">Toggle Theme</span></button></li>
 {/*  CTA Button (Visible on hover)  */}
 <div className="px-4 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
 <button className="w-full py-2 bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container font-label-caps text-label-caps rounded-lg hover:shadow-[0_0_20px_rgba(76,215,246,0.4)] transition-all">
@@ -68,13 +68,13 @@ export default function DashboardPage() {
 <ul className="flex flex-col gap-2 w-full">
 <li className="">
 <a className="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all ease-in-out duration-300 whitespace-nowrap font-label-caps text-label-caps" href="#">
-<span className="material-symbols-outlined text-2xl shrink-0">help</span>
+<i className="fa-solid fa-circle-question text-2xl shrink-0"></i>
 <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out tracking-[0.1em]">Support</span>
 </a>
 </li>
 <li className="">
 <a className="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-all ease-in-out duration-300 whitespace-nowrap font-label-caps text-label-caps" href="#">
-<span className="material-symbols-outlined text-2xl shrink-0">logout</span>
+<i className="fa-solid fa-right-from-bracket text-2xl shrink-0"></i>
 <span className="ml-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out tracking-[0.1em]">Logout</span>
 </a>
 </li>
@@ -82,7 +82,7 @@ export default function DashboardPage() {
 {/*  User Avatar Minimized  */}
 <div className="px-4 mt-2 flex items-center mb-2">
 <div className="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center border border-white/10 shrink-0">
-<span className="material-symbols-outlined text-on-surface-variant">person</span>
+<i className="fa-solid fa-user text-on-surface-variant"></i>
 </div>
 </div>
 </div>
@@ -114,7 +114,7 @@ export default function DashboardPage() {
 <div className="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent opacity-80"></div>
 {/*  Top Right Badge  */}
 <div className="absolute top-4 right-4 bg-surface-container/60 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full flex items-center gap-2">
-<span className="material-symbols-outlined text-primary text-sm">verified_user</span>
+<i className="fa-solid fa-shield-halved text-primary text-sm"></i>
 <span className="font-label-caps text-label-caps text-primary tracking-widest">VERIFIED</span>
 </div>
 </div>
@@ -132,26 +132,26 @@ export default function DashboardPage() {
 </div>
 {/*  Circular Action Button  */}
 <button className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary/50 transition-colors bg-white/5 hover:bg-primary/10">
-<span className="material-symbols-outlined text-xl">more_vert</span>
+<i className="fa-solid fa-ellipsis-vertical text-xl"></i>
 </button>
 </div>
 {/*  Status Indicator (Glowing)  */}
 <div className="mb-6 py-3 px-4 rounded-lg bg-surface-container-highest/30 border border-[#4ade80]/20 flex items-center gap-3">
-<span className="material-symbols-outlined text-[#4ade80] drop-shadow-[0_0_10px_rgba(74,222,128,0.6)]">check_circle</span>
+<i className="fa-solid fa-circle-check text-[#4ade80] drop-shadow-[0_0_10px_rgba(74,222,128,0.6)]"></i>
 <span className="font-body-md text-body-md text-[#4ade80] drop-shadow-[0_0_5px_rgba(74,222,128,0.2)]">Kondisi Aman</span>
 </div>
 {/*  Metrics Grid  */}
 <div className="grid grid-cols-2 gap-4 mt-auto">
 <div className="flex flex-col gap-1">
 <span className="flex items-center gap-1.5 font-label-caps text-label-caps text-on-surface-variant">
-<span className="material-symbols-outlined text-[16px]">speed</span>
+<i className="fa-solid fa-gauge text-[16px]"></i>
                                 ODOMETER
                             </span>
 <span className="font-body-lg text-body-lg text-on-surface font-semibold">20.838 <span className="text-sm text-on-surface-variant font-normal">KM</span></span>
 </div>
 <div className="flex flex-col gap-1">
 <span className="flex items-center gap-1.5 font-label-caps text-label-caps text-on-surface-variant">
-<span className="material-symbols-outlined text-[16px]">build</span>
+<i className="fa-solid fa-wrench text-[16px]"></i>
                                 TERAKHIR SERVIS
                             </span>
 <span className="font-body-lg text-body-lg text-on-surface font-semibold">Apr 2026</span>
@@ -164,7 +164,7 @@ export default function DashboardPage() {
 {/*  Hover Glow Effect  */}
 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-500"></div>
 <div className="w-16 h-16 rounded-full border border-outline-variant group-hover:border-primary flex items-center justify-center bg-surface-variant/30 group-hover:bg-primary/10 transition-all duration-300 z-10">
-<span className="material-symbols-outlined text-3xl text-outline-variant group-hover:text-primary transition-colors">add</span>
+<i className="fa-solid fa-plus text-3xl text-outline-variant group-hover:text-primary transition-colors"></i>
 </div>
 <span className="font-headline-md text-headline-md text-on-surface-variant group-hover:text-primary transition-colors z-10">Tambah Kendaraan</span>
 <span className="font-body-md text-body-md text-on-surface-variant/60 text-center max-w-[200px] z-10">Daftarkan kendaraan baru untuk mulai memantau kondisinya.</span>
@@ -174,20 +174,20 @@ export default function DashboardPage() {
 {/*  Mobile Bottom Navigation Shell (Only visible on small screens)  */}
 <nav className="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl border-t border-white/5 pb-safe pt-2 px-4 flex justify-between items-center">
 <a className="flex flex-col items-center p-2 text-on-surface-variant" href="#">
-<span className="material-symbols-outlined">dashboard</span>
+<i className="fa-solid fa-table-columns"></i>
 <span className="font-label-caps text-[10px] mt-1">Dash</span>
 </a>
 <a className="flex flex-col items-center p-2 text-primary drop-shadow-[0_0_8px_rgba(76,215,246,0.4)] relative" href="#">
 <div className="absolute -top-1 w-8 h-1 bg-primary rounded-full"></div>
-<span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>directions_car</span>
+<i className="fa-solid fa-car"></i>
 <span className="font-label-caps text-[10px] mt-1 font-bold">Garage</span>
 </a>
 <a className="flex flex-col items-center p-2 text-on-surface-variant" href="#">
-<span className="material-symbols-outlined">history</span>
+<i className="fa-solid fa-clock-rotate-left"></i>
 <span className="font-label-caps text-[10px] mt-1">History</span>
 </a>
 <a className="flex flex-col items-center p-2 text-on-surface-variant" href="#">
-<span className="material-symbols-outlined">settings</span>
+<i className="fa-solid fa-gear"></i>
 <span className="font-label-caps text-[10px] mt-1">Set</span>
 </a>
 </nav>

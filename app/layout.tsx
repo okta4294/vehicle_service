@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning>
       <head>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+        <script src="https://kit.fontawesome.com/9d2a010394.js" crossOrigin="anonymous" async></script>
       </head>
       <body className={`${inter.variable} ${sora.variable} ${jetbrainsMono.variable} font-sans min-h-screen flex flex-col bg-background text-on-surface selection:bg-primary-container/30`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

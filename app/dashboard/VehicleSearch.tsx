@@ -31,7 +31,7 @@ export default function VehicleSearch() {
         className="absolute z-10 w-12 h-12 rounded-full flex items-center justify-center text-on-surface hover:text-primary transition-all"
         aria-label="Search"
       >
-        <span className="material-symbols-outlined">search</span>
+        <i className="fa-solid fa-magnifying-glass"></i>
       </button>
       
       <input

@@ -24,7 +24,7 @@ export default function Navigation() {
           onClick={() => setIsOpen(!isOpen)}
           className="text-on-surface-variant hover:text-primary transition-colors"
         >
-          <span className="material-symbols-outlined">{isOpen ? 'close' : 'menu'}</span>
+          <i className={`fa-solid ${isOpen ? 'fa-xmark' : 'fa-bars'}`}></i>
         </button>
       </nav>
 
@@ -46,11 +46,11 @@ export default function Navigation() {
         </Link>
         <div className="flex-1 flex flex-col gap-2 w-full px-2">
           <Link onClick={() => setIsOpen(false)} className="flex items-center w-full px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300" href="/dashboard">
-            <span className="material-symbols-outlined shrink-0">dashboard</span>
+            <i className="fa-solid fa-table-columns shrink-0"></i>
             <span className={`ml-4 font-label-caps text-label-caps transition-opacity duration-300 whitespace-nowrap ${isOpen ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'}`}>Dashboard</span>
           </Link>
           <Link onClick={() => setIsOpen(false)} className="flex items-center w-full px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300" href="/dashboard/history">
-            <span className="material-symbols-outlined shrink-0">history</span>
+            <i className="fa-solid fa-clock-rotate-left shrink-0"></i>
             <span className={`ml-4 font-label-caps text-label-caps transition-opacity duration-300 whitespace-nowrap ${isOpen ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'}`}>History</span>
           </Link>
         </div>
@@ -62,7 +62,7 @@ export default function Navigation() {
         <div className="border-t border-white/5 pt-4 flex flex-col gap-2 w-full px-2 mt-auto shrink-0">
           <form action={logout} className="w-full">
             <button type="submit" className="flex items-center w-full px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-all duration-300">
-              <span className="material-symbols-outlined shrink-0">logout</span>
+              <i className="fa-solid fa-right-from-bracket shrink-0"></i>
               <span className={`ml-4 font-label-caps text-label-caps transition-opacity duration-300 whitespace-nowrap ${isOpen ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'}`}>Logout</span>
             </button>
           </form>

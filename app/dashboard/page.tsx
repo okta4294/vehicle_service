@@ -70,7 +70,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 </div>
 {/*  Theme Toggle & Quick Actions  */}
 <div className="flex items-center gap-4">
-<Suspense fallback={<div className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-on-surface"><span className="material-symbols-outlined">search</span></div>}>
+<Suspense fallback={<div className="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-on-surface"><i className="fa-solid fa-magnifying-glass"></i></div>}>
 <VehicleSearch />
 </Suspense>
 <ThemeToggle />
@@ -83,13 +83,13 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
         const latestService = v.serviceRecords[0]
         let statusText = 'Belum Servis'
         let statusColor = 'text-on-surface-variant'
-        let iconName = 'help'
+        let iconName = 'fa-circle-question'
         let iconColor = 'text-on-surface-variant'
 
         if (latestService) {
             statusText = 'Aman'
             statusColor = 'text-primary'
-            iconName = 'check_circle'
+            iconName = 'fa-circle-check'
             iconColor = 'text-primary'
         }
 
@@ -104,12 +104,12 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
                             <p className="font-label-caps text-[10px] text-primary/70 mt-1">{v.plateNumber || 'Belum ada plat'}</p>
                         </div>
                         <div className="w-10 h-10 rounded-full bg-surface-bright flex items-center justify-center border border-white/5 text-on-surface-variant shrink-0">
-                            <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 0" }}>{v.type === 'mobil' ? 'directions_car' : 'two_wheeler'}</span>
+                            <i className={`fa-solid ${v.type === 'mobil' ? 'fa-car' : 'fa-motorcycle'} text-xl`}></i>
                         </div>
                     </div>
                     <div className="h-32 mb-6 rounded-lg bg-surface-container relative overflow-hidden flex items-center justify-center border border-white/5 group-hover:border-primary/20 transition-colors">
                         <div className="w-full h-full bg-gradient-to-b from-transparent to-surface-container-highest absolute inset-0 z-10"></div>
-                        <span className="material-symbols-outlined text-6xl text-on-surface-variant/20 z-0 absolute" style={{ fontVariationSettings: "'FILL' 0" }}>{v.type === 'mobil' ? 'directions_car' : 'two_wheeler'}</span>
+                        <i className={`fa-solid ${v.type === 'mobil' ? 'fa-car' : 'fa-motorcycle'} text-6xl text-on-surface-variant/20 z-0 absolute`}></i>
                     </div>
                     <div className="grid grid-cols-2 gap-4 relative z-10">
                         <div className="bg-surface-container/50 rounded-lg p-3 border border-white/5">
@@ -121,7 +121,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
                         <div className={`${latestService ? 'bg-primary/10 border-primary/20 shadow-[inset_0_0_10px_rgba(76,215,246,0.1)]' : 'bg-surface-container/50 border-white/5'} rounded-lg p-3 border`}>
                             <span className={`font-label-caps text-[10px] ${statusColor} block mb-1`}>Status Servis</span>
                             <div className={`font-body-md text-body-md ${statusColor} flex items-center gap-1`}>
-                                {statusText} <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>{iconName}</span>
+                                {statusText} <i className={`fa-solid ${iconName} text-sm`}></i>
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 {/*  Add Vehicle Card (Dashed)  */}
 <Link href="/dashboard/vehicles/new" className="rounded-xl p-6 border-2 border-dashed border-outline-variant hover:border-primary/50 bg-transparent flex flex-col items-center justify-center min-h-[300px] group transition-all duration-300 hover:bg-primary/5">
 <div className="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-4 border border-white/5 group-hover:shadow-[0_0_20px_rgba(76,215,246,0.3)] group-hover:border-primary/30 transition-all duration-300">
-<span className="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary transition-colors">add</span>
+<i className="fa-solid fa-plus text-3xl text-on-surface-variant group-hover:text-primary transition-colors"></i>
 </div>
 <span className="font-headline-md text-lg text-on-surface-variant group-hover:text-on-surface transition-colors">Tambah Kendaraan</span>
 <span className="font-label-caps text-[10px] text-on-surface-variant/50 mt-2">Sinkronisasi data OBD2 tersedia</span>

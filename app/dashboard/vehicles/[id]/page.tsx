@@ -22,11 +22,10 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
 
   if (!vehicle) notFound()
 
-  const oilIntervalsList = await prisma.oilInterval.findMany({
-    select: { brand: true },
-    distinct: ['brand']
+  const oilOptions = await prisma.oilInterval.findMany({
+    select: { brand: true, oilChangeKm: true },
+    orderBy: { brand: 'asc' }
   })
-  const existingOilBrands = oilIntervalsList.map(o => o.brand)
 
   // 1. Get default service intervals for the vehicle
   const defaultIntervals = await prisma.serviceInterval.findFirst({
@@ -53,9 +52,19 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
 
   // 4. Calculate Oil Estimations
   const lastOilKm = latestOilRecord ? latestOilRecord.kmAtService : vehicle.currentKm
-  const nextOilKm = lastOilKm + defaultOilInterval
+  
+  // Jika user menyetel target KM custom saat servis, gunakan itu. Jika tidak, gunakan default interval.
+  const nextOilKm = (latestOilRecord && latestOilRecord.nextServiceKm) 
+      ? latestOilRecord.nextServiceKm 
+      : lastOilKm + defaultOilInterval
+
+  // Sesuaikan interval untuk progress bar jika user mengisi target spesifik
+  const activeOilInterval = (latestOilRecord && latestOilRecord.nextServiceKm)
+      ? latestOilRecord.nextServiceKm - latestOilRecord.kmAtService
+      : defaultOilInterval
+
   const oilRemaining = nextOilKm - vehicle.currentKm
-  const oilProgress = Math.max(0, Math.min(100, ((vehicle.currentKm - lastOilKm) / defaultOilInterval) * 100))
+  const oilProgress = Math.max(0, Math.min(100, ((vehicle.currentKm - lastOilKm) / activeOilInterval) * 100))
   const oilStatus = oilRemaining <= 0 ? 'Terlewat' : oilRemaining <= 500 ? 'Segera' : 'Aman'
   const oilColor = oilRemaining <= 500 ? 'tertiary' : 'primary'
 
@@ -76,7 +85,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
 {/*  ODOMETER CARD  */}
 <div className="glass-panel rounded-xl p-6 relative overflow-hidden group">
 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-<span className="material-symbols-outlined text-[100px] text-primary" >speed</span>
+<i className="fa-solid fa-gauge text-[100px] text-primary"></i>
 </div>
 <h3 className="font-headline-md text-headline-md text-on-surface mb-1 relative z-10">Kilometer Saat Ini</h3>
 <p className="font-body-md text-body-md text-on-surface-variant mb-6 relative z-10">Pembaruan terakhir: 2 hari lalu</p>
@@ -86,17 +95,17 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
 <div className="flex gap-2 relative z-10">
 <input className="w-full bg-surface-container/50 border border-outline-variant rounded-lg px-4 py-2 font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Update KM..." type="number"/>
 <button className="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-caps text-label-caps hover:bg-primary-fixed transition-colors">
-<span className="material-symbols-outlined" >sync</span>
+<i className="fa-solid fa-arrows-rotate"></i>
 </button>
 </div>
 </div>
 {/*  FORM TAMBAH RIWAYAT  */}
 <div className="glass-panel rounded-xl p-6">
 <div className="flex items-center gap-3 mb-6">
-<span className="material-symbols-outlined text-tertiary" >build_circle</span>
+<i className="fa-solid fa-screwdriver-wrench text-tertiary"></i>
 <h3 className="font-headline-md text-headline-md text-on-surface">Catat Servis Baru</h3>
 </div>
-<AddServiceForm vehicleId={vehicle.id} existingOilBrands={existingOilBrands} />
+<AddServiceForm vehicleId={vehicle.id} oilOptions={oilOptions} />
 </div>
 </div>
 {/*  RIGHT COLUMN: PROGRESS & HISTORY  */}
@@ -104,7 +113,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
 {/*  ESTIMASI SERVIS BENTO  */}
 <div className="glass-panel rounded-xl p-6">
 <h3 className="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-2">
-<span className="material-symbols-outlined text-primary" >health_and_safety</span>
+<i className="fa-solid fa-shield-heart text-primary"></i>
                         Estimasi Perawatan
                     </h3>
 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -113,7 +122,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
 <div className="flex justify-between items-start mb-4">
 <div className="flex items-center gap-3">
 <div className={`w-10 h-10 rounded-full bg-${oilColor}/10 flex items-center justify-center text-${oilColor}`}>
-<span className="material-symbols-outlined" >oil_barrel</span>
+<i className="fa-solid fa-oil-can"></i>
 </div>
 <div>
 <h4 className="font-body-lg text-body-lg text-on-surface">Oli</h4>
@@ -135,7 +144,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
 <div className="flex justify-between items-start mb-4">
 <div className="flex items-center gap-3">
 <div className={`w-10 h-10 rounded-full bg-${routineColor}/10 flex items-center justify-center text-${routineColor}`}>
-<span className="material-symbols-outlined" >settings</span>
+<i className="fa-solid fa-gear"></i>
 </div>
 <div>
 <h4 className="font-body-lg text-body-lg text-on-surface">Servis Rutin</h4>
@@ -158,7 +167,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
 <div className="glass-panel rounded-xl p-0 overflow-hidden flex-grow flex flex-col">
 <div className="p-6 border-b border-white/5 flex justify-between items-center bg-surface-container/10">
 <h3 className="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
-<span className="material-symbols-outlined text-outline-variant" >history</span>
+<i className="fa-solid fa-clock-rotate-left text-outline-variant"></i>
                             Riwayat Servis
                         </h3>
 <button className="text-primary font-label-caps text-label-caps hover:text-primary-fixed transition-colors">Lihat Semua</button>
@@ -168,7 +177,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
 <div className="group bg-surface-container/20 hover:bg-surface-container/40 border border-white/5 rounded-lg p-4 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4">
 <div className="flex items-start gap-4">
 <div className="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
-<span className="material-symbols-outlined" >oil_barrel</span>
+<i className="fa-solid fa-oil-can"></i>
 </div>
 <div>
 <h4 className="font-body-lg text-body-lg text-on-surface group-hover:text-primary transition-colors">Ganti Oli Mesin &amp; Gardan</h4>
@@ -184,7 +193,7 @@ export default async function VehicleDetailPage({ params }: { params: Promise<{ 
 <div className="group bg-surface-container/20 hover:bg-surface-container/40 border border-white/5 rounded-lg p-4 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4">
 <div className="flex items-start gap-4">
 <div className="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
-<span className="material-symbols-outlined" >settings</span>
+<i className="fa-solid fa-gear"></i>
 </div>
 <div>
 <h4 className="font-body-lg text-body-lg text-on-surface group-hover:text-primary transition-colors">Servis Rutin Lengkap</h4>
