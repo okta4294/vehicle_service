@@ -2,7 +2,6 @@
 
 import { useActionState, useState } from 'react'
 import { login, register } from '@/app/actions/auth'
-import Link from 'next/link'
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true)

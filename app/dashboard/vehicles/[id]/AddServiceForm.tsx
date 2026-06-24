@@ -38,7 +38,7 @@ export default function AddServiceForm({ vehicleId, oilOptions = [] }: { vehicle
         <input type="hidden" name="vehicleId" value={vehicleId} />
         <div>
             <label className="block font-label-sm text-label-sm text-on-surface-variant mb-1" htmlFor="serviceDate">Tanggal</label>
-            <input className="w-full bg-surface-container/50 border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary transition-all [color-scheme:dark]" type="date" id="serviceDate" name="serviceDate" required defaultValue={new Date().toISOString().split('T')[0]} />
+            <input className="w-full bg-surface border border-outline-variant rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary transition-all" type="date" id="serviceDate" name="serviceDate" required defaultValue={new Date().toISOString().split('T')[0]} />
         </div>
         <div>
             <label className="block font-label-sm text-label-sm text-on-surface-variant mb-1" htmlFor="type">Jenis Servis</label>
@@ -97,7 +97,7 @@ export default function AddServiceForm({ vehicleId, oilOptions = [] }: { vehicle
         {state?.error && <p className="text-error text-sm">{state.error}</p>}
         {state?.success && <p className="text-primary text-sm">Riwayat servis berhasil ditambahkan.</p>}
         
-        <button disabled={isPending} className="w-full py-3 rounded-lg bg-gradient-to-r from-primary/20 to-primary/5 border border-primary/30 text-primary font-label-sm text-label-sm hover:bg-primary/30 hover:glow-primary transition-all duration-300 disabled:opacity-50" type="submit">
+        <button disabled={isPending} className="w-full py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-fixed transition-colors disabled:opacity-50" type="submit">
             {isPending ? 'Menyimpan...' : 'Simpan Riwayat'}
         </button>
     </form>

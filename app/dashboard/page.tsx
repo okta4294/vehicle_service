@@ -84,13 +84,11 @@ export default async function DashboardPage({ searchParams }: { searchParams: Pr
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
 {vehicles.map((v) => {
         const latestService = v.serviceRecords[0]
-        let statusIcon = 'fa-circle-question'
         let statusLabel = 'Belum Servis'
         let statusColor = 'text-on-surface-variant'
         let dotColor = 'bg-outline'
 
         if (latestService) {
-            statusIcon = 'fa-circle-check'
             statusLabel = 'Aman'
             statusColor = 'text-primary'
             dotColor = 'bg-primary'

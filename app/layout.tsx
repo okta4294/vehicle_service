@@ -3,7 +3,6 @@ import { Inter, Montserrat } from "next/font/google";
 import { Toaster } from "sonner";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import "@aejkatappaja/phantom-ui/ssr.css";
 import "./globals.css";
 
 const inter = Inter({

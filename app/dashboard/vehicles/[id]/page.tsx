@@ -103,8 +103,8 @@ Kembali ke Dashboard
 {/*  LEFT COLUMN: STATUS & UPDATE  */}
 <div className="lg:col-span-4 flex flex-col gap-6">
 {/*  ODOMETER CARD  */}
-<div className="bg-surface-container-low border border-outline-variant rounded-lg p-6">
-<div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<div className="bg-surface-container-low border border-outline-variant rounded-lg p-6 relative">
+<div className="absolute top-0 right-0 p-4 opacity-10">
 <i className="fa-solid fa-gauge text-[100px] text-primary"></i>
 </div>
 <h3 className="font-headline-md text-headline-md text-on-surface mb-1 relative z-10">Kilometer Saat Ini</h3>
@@ -138,7 +138,7 @@ Kembali ke Dashboard
                     </h3>
 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 {/*  Oli Mesin  */}
-<div className="bg-surface-container/30 rounded-lg p-5 border border-white/5">
+<div className="bg-surface-container/30 rounded-lg p-5 border border-outline-variant">
 <div className="flex justify-between items-start mb-4">
 <div className="flex items-center gap-3">
 <div className={`w-10 h-10 rounded-full ${oilStyle.bg} flex items-center justify-center ${oilStyle.text}`}>
@@ -160,7 +160,7 @@ Kembali ke Dashboard
 </div>
 </div>
 {/*  Busi -> Servis Rutin  */}
-<div className="bg-surface-container/30 rounded-lg p-5 border border-white/5">
+<div className="bg-surface-container/30 rounded-lg p-5 border border-outline-variant">
 <div className="flex justify-between items-start mb-4">
 <div className="flex items-center gap-3">
 <div className={`w-10 h-10 rounded-full ${routineStyle.bg} flex items-center justify-center ${routineStyle.text}`}>
@@ -185,7 +185,7 @@ Kembali ke Dashboard
 </div>
 {/*  RIWAYAT SERVIS  */}
 <div className="bg-surface-container-low border border-outline-variant rounded-lg overflow-hidden flex-grow flex flex-col">
-<div className="p-6 border-b border-white/5 flex justify-between items-center bg-surface-container/10">
+<div className="p-6 border-b border-outline-variant flex justify-between items-center bg-surface-container/10">
 <h3 className="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
 <i className="fa-solid fa-clock-rotate-left text-outline-variant"></i>
                             Riwayat Servis
@@ -200,7 +200,7 @@ Kembali ke Dashboard
   }
   const config = recordConfig[record.type] || { icon: 'fa-wrench', label: record.type }
   return (
-    <div key={record.id} className="group bg-surface-container/20 hover:bg-surface-container/40 border border-white/5 rounded-lg p-4 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div key={record.id} className="group bg-surface-container/20 hover:bg-surface-container/40 border border-outline-variant rounded-lg p-4 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4">
       <div className="flex items-start gap-4">
         <div className="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
           <i className={`fa-solid ${config.icon}`}></i>
@@ -212,7 +212,7 @@ Kembali ke Dashboard
       </div>
       <div className="text-left md:text-right flex flex-row md:flex-col justify-between items-center md:items-end w-full md:w-auto">
         <span className="font-label-sm text-label-sm text-outline mb-1">{record.serviceDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-        <span className="font-label-sm text-label-sm text-on-surface bg-surface-container-high px-2 py-1 rounded border border-white/5">{record.kmAtService.toLocaleString('id-ID')} km</span>
+        <span className="font-label-sm text-label-sm text-on-surface bg-surface-container-high px-2 py-1 rounded border border-outline-variant">{record.kmAtService.toLocaleString('id-ID')} km</span>
       </div>
     </div>
   )
