@@ -40,10 +40,10 @@ export default function VehicleSearch() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onFocus={() => setIsExpanded(true)}
-        onBlur={(e) => {
+        onBlur={() => {
           if (!query) setIsExpanded(false)
         }}
-        className={`w-full h-12 bg-surface-container/30 border border-white/5 focus:border-primary/50 rounded-full pl-12 pr-4 font-body-md text-on-surface focus:outline-none transition-all duration-300 ${isExpanded ? 'opacity-100 glass-panel' : 'opacity-0 pointer-events-none'}`}
+        className={`w-full h-12 bg-surface-container-low border border-outline-variant focus:border-primary/50 rounded-full pl-12 pr-4 font-body-md text-on-surface focus:outline-none transition-all duration-300 ${isExpanded ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       />
       {isPending && isExpanded && (
         <span className="absolute right-4 w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></span>

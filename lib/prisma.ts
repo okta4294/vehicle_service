@@ -11,13 +11,12 @@ const globalForPrisma = globalThis as unknown as {
 }
 
 function createPrismaClient() {
-  const dbUrl = process.env.DATABASE_URL || "postgresql://neondb_owner:npg_tkXwDxP6gi0o@ep-nameless-dream-ao5uwcni-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
-  
-  // Di Next.js/Prisma versi terbaru ini, PrismaNeon menerima object config (bukan instance Pool).
+  const dbUrl = process.env.DATABASE_URL
+  if (!dbUrl) throw new Error('DATABASE_URL is not set in environment variables')
+
   const adapter = new PrismaNeon({ connectionString: dbUrl })
-  return new PrismaClient({ adapter }) // Prisma 7 mewajibkan opsi adapter!
+  return new PrismaClient({ adapter })
 }
 
-export const prisma = createPrismaClient()
-// Selalu override cache saat hot reload agar perubahan config terbaca
+export const prisma = globalForPrisma.prismaFresh ?? createPrismaClient()
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prismaFresh = prisma

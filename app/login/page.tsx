@@ -3,7 +3,6 @@
 import { useActionState, useState } from 'react'
 import { login, register } from '@/app/actions/auth'
 import Link from 'next/link'
-import ThemeToggle from '@/components/ThemeToggle'
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true)
@@ -12,167 +11,83 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <div className="bg-background text-on-surface min-h-screen flex flex-col items-center justify-center relative overflow-hidden font-body-md text-body-md selection:bg-primary/30 selection:text-primary-fixed">
-      {/* Ambient Background Ethereal Glows */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center">
-        <div className="absolute w-[600px] h-[600px] rounded-full bg-primary/10 blur-[100px] opacity-60 mix-blend-screen translate-x-1/4 -translate-y-1/4"></div>
-        <div className="absolute w-[800px] h-[800px] rounded-full bg-secondary-container/10 blur-[120px] opacity-40 mix-blend-screen -translate-x-1/4 translate-y-1/4"></div>
-        {/* Subtle Grid Overlay */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik02MCAwaC0xdjYwaDFWMHptLTIgMGgtMXY2MGgxVjB6TTAgNTloNjB2MWgtNjB2LTF6TTAgNTdoNjB2MWgtNjB2LTF6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz48L2c+PC9zdmc+')] opacity-20" style={{ maskImage: "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))", WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))" }}></div>
-      </div>
-      
-      {/* Back Button */}
-      <div className="absolute top-6 left-6 z-50">
-        <Link href="/" className="flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-on-surface-variant hover:text-primary hover:bg-white/5 hover:shadow-[0_0_15px_rgba(76,215,246,0.2)] transition-all group">
-          <i className="fa-solid fa-arrow-left text-lg group-hover:-translate-x-1 transition-transform"></i>
-          <span className="font-label-caps text-label-caps hidden sm:block">Kembali</span>
-        </Link>
-      </div>
-
-      {/* Theme Toggle */}
-      <div className="absolute top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
-
-      {/* Main Login Container */}
-      <main className="relative z-10 w-full max-w-[480px] px-container-padding">
-        {/* Glass Card */}
-        <div className="glass-panel rounded-xl p-8 md:p-12 phantom-glow relative overflow-hidden flex flex-col items-center">
-          {/* Diagonal Light Sweep Effect inside card */}
-          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
-          
-          {/* Header Section */}
-          <div className="w-full text-center mb-10 flex flex-col items-center">
-            <div className="w-24 h-24 mb-6 rounded-full glass-panel p-2 shadow-[0_0_30px_rgba(76,215,246,0.2)]">
-              <img alt="AutoCare Logo" className="w-full h-full object-contain rounded-full" src="https://lh3.googleusercontent.com/aida/AP1WRLuOi-fKT5G3ETKsEt4RFHebcQw6PqvDMD5QMTawKTH1A2XM9z1a3YaVXpfYo5zIBPjkpEaqdyIJ2Ykn2yqD1SaGpHiMsY4Il4O14JqY61Bjc5GljCSb8h3kMJh5XNeLsQqkO81DgbJc-BZxgXLcfLn0WynuFuMKeoog2EELfVd55N0EeCEuYHXM8aJ7kbmZxnbwL5oornidPs7FA7uPdC7Xu71O48Q1i0DU8rtvZzVOh85ef-pLeQEpXJA"/>
-            </div>
-            <h1 className="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2 tracking-tight">
-              {isLogin ? 'Selamat Datang' : 'Buat Akun'}
-            </h1>
-            <p className="font-body-md text-body-md text-on-surface-variant max-w-[280px] mx-auto">
-              {isLogin ? 'Akses dashboard AutoCare Anda untuk pemantauan sistem.' : 'Registrasi untuk mulai memantau kendaraan Anda.'}
-            </p>
+    <div className="bg-background text-on-background min-h-screen flex flex-col items-center justify-center p-6 antialiased">
+      <main className="w-full max-w-sm flex flex-col gap-6">
+        {/* Header */}
+        <div className="text-center flex flex-col items-center gap-2 mb-4">
+          <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-1">
+            <i className="fa-solid fa-car text-on-primary text-2xl"></i>
           </div>
-          
-          {/* Login Form */}
-          <form action={isLogin ? loginAction : registerAction} className="w-full space-y-6">
+          <h1 className="font-headline-lg text-headline-lg text-primary">AutoCare</h1>
+          <p className="font-body-md text-body-md text-on-surface-variant">System Access</p>
+        </div>
+
+        {/* Card */}
+        <div className="bg-surface-container-low border border-surface-container-high rounded-lg p-6 w-full flex flex-col gap-4">
+          <form action={isLogin ? loginAction : registerAction} className="flex flex-col gap-4">
             {!isLogin && (
-                <div className="space-y-2">
-                    <label className="block font-label-caps text-label-caps text-primary uppercase tracking-widest pl-1" htmlFor="name">
-                        Nama Lengkap
-                    </label>
-                    <div className="relative glass-input rounded-xl flex items-center px-4 py-3 group">
-                        <i className="fa-solid fa-user text-outline group-focus-within:text-primary mr-3 transition-colors text-lg"></i>
-                        <input className="bg-transparent border-none w-full text-on-surface font-body-md focus:ring-0 placeholder:text-outline/50 p-0" id="name" name="name" placeholder="Nama Lengkap" required={!isLogin} type="text"/>
-                    </div>
-                    {!isLogin && registerState?.errors?.name && <p className="text-error text-xs mt-1 pl-1">{registerState.errors.name}</p>}
-                </div>
+              <div className="flex flex-col gap-1">
+                <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="name">Nama Lengkap</label>
+                <input className="w-full bg-surface border border-surface-container-high rounded p-2 pl-3 font-body-md text-body-md text-on-surface focus:border-primary focus:outline-none transition-colors" id="name" name="name" placeholder="Nama Lengkap" required={!isLogin} type="text"/>
+                {registerState?.errors?.name && <p className="text-error text-xs">{registerState.errors.name}</p>}
+              </div>
             )}
 
-            {/* Email Field */}
-            <div className="space-y-2">
-              <label className="block font-label-caps text-label-caps text-primary uppercase tracking-widest pl-1" htmlFor="email">
-                Email Address
-              </label>
-              <div className="relative glass-input rounded-xl flex items-center px-4 py-3 group">
-                <i className="fa-solid fa-envelope text-outline group-focus-within:text-primary mr-3 transition-colors text-lg"></i>
-                <input className="bg-transparent border-none w-full text-on-surface font-body-md focus:ring-0 placeholder:text-outline/50 p-0" id="email" name="email" placeholder="admin@autocare.com" required type="email"/>
-              </div>
-              {isLogin && loginState?.errors?.email && <p className="text-error text-xs mt-1 pl-1">{loginState.errors.email}</p>}
-              {!isLogin && registerState?.errors?.email && <p className="text-error text-xs mt-1 pl-1">{registerState.errors.email}</p>}
+            <div className="flex flex-col gap-1">
+              <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="email">Email</label>
+              <input className="w-full bg-surface border border-surface-container-high rounded p-2 pl-3 font-body-md text-body-md text-on-surface focus:border-primary focus:outline-none transition-colors" id="email" name="email" placeholder="admin@autocare.com" required type="email"/>
+              {isLogin && loginState?.errors?.email && <p className="text-error text-xs">{loginState.errors.email}</p>}
+              {!isLogin && registerState?.errors?.email && <p className="text-error text-xs">{registerState.errors.email}</p>}
             </div>
-            
-            {/* Password Field */}
-            <div className="space-y-2">
-              <div className="flex justify-between items-center pl-1">
-                <label className="block font-label-caps text-label-caps text-primary uppercase tracking-widest" htmlFor="password">
-                  Password
-                </label>
-                {isLogin && (
-                    <a className="font-label-caps text-[10px] text-primary/70 hover:text-primary transition-colors tracking-wider" href="#">
-                        Lupa Password?
-                    </a>
-                )}
-              </div>
-              <div className="relative glass-input rounded-xl flex items-center px-4 py-3 group">
-                <i className="fa-solid fa-lock text-outline group-focus-within:text-primary mr-3 transition-colors text-lg"></i>
-                <input className="bg-transparent border-none w-full text-on-surface font-body-md focus:ring-0 placeholder:text-outline/50 p-0 tracking-widest" id="password" name="password" placeholder="••••••••" required type={showPassword ? 'text' : 'password'}/>
-                <button onClick={() => setShowPassword(!showPassword)} aria-label="Toggle password visibility" className="ml-3 text-outline hover:text-on-surface transition-colors focus:outline-none" type="button">
-                  <i className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'} text-lg`}></i>
+
+            <div className="flex flex-col gap-1">
+              <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="password">Password</label>
+              <div className="relative">
+                <input className="w-full bg-surface border border-surface-container-high rounded p-2 pl-3 font-body-md text-body-md text-on-surface focus:border-primary focus:outline-none transition-colors pr-10" id="password" name="password" placeholder="password" required type={showPassword ? 'text' : 'password'}/>
+                <button onClick={() => setShowPassword(!showPassword)} type="button" className="absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface">
+                  <i className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
                 </button>
               </div>
-              {isLogin && loginState?.errors?.password && <p className="text-error text-xs mt-1 pl-1">{loginState.errors.password}</p>}
-              {!isLogin && registerState?.errors?.password && <p className="text-error text-xs mt-1 pl-1">{registerState.errors.password}</p>}
+              {isLogin && loginState?.errors?.password && <p className="text-error text-xs">{loginState.errors.password}</p>}
+              {!isLogin && registerState?.errors?.password && <p className="text-error text-xs">{registerState.errors.password}</p>}
             </div>
 
             {!isLogin && (
-                <div className="space-y-2">
-                    <label className="block font-label-caps text-label-caps text-primary uppercase tracking-widest pl-1" htmlFor="confirmPassword">
-                        Konfirmasi Password
-                    </label>
-                    <div className="relative glass-input rounded-xl flex items-center px-4 py-3 group">
-                        <i className="fa-solid fa-lock text-outline group-focus-within:text-primary mr-3 transition-colors text-lg"></i>
-                        <input className="bg-transparent border-none w-full text-on-surface font-body-md focus:ring-0 placeholder:text-outline/50 p-0 tracking-widest" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required={!isLogin} type={showPassword ? 'text' : 'password'}/>
-                    </div>
-                    {!isLogin && registerState?.errors?.confirmPassword && <p className="text-error text-xs mt-1 pl-1">{registerState.errors.confirmPassword}</p>}
-                </div>
+              <div className="flex flex-col gap-1">
+                <label className="font-label-md text-label-md text-on-surface-variant" htmlFor="confirmPassword">Konfirmasi Password</label>
+                <input className="w-full bg-surface border border-surface-container-high rounded p-2 pl-3 font-body-md text-body-md text-on-surface focus:border-primary focus:outline-none transition-colors" id="confirmPassword" name="confirmPassword" placeholder="konfirmasi password" required={!isLogin} type={showPassword ? 'text' : 'password'}/>
+                {registerState?.errors?.confirmPassword && <p className="text-error text-xs">{registerState.errors.confirmPassword}</p>}
+              </div>
             )}
 
-            {/* General Error Message */}
-            {isLogin && loginState?.errors?.general && <p className="text-error text-sm bg-error-container/20 text-error p-3 rounded-xl border border-error/20">{loginState.errors.general}</p>}
-            {!isLogin && registerState?.errors?.general && <p className="text-error text-sm bg-error-container/20 text-error p-3 rounded-xl border border-error/20">{registerState.errors.general}</p>}
+            {isLogin && (
+              <div className="flex justify-between items-center mt-1">
+                <a className="font-label-sm text-label-sm text-primary hover:text-primary-fixed transition-colors" href="#">Lupa Password</a>
+              </div>
+            )}
 
-            {/* Action Area */}
-            <div className="pt-4">
-              <button disabled={isLogin ? isLoginPending : isRegisterPending} className="w-full bg-gradient-to-r from-[#4cd7f6] to-[#06b6d4] rounded-full py-4 px-6 font-body-lg text-body-lg font-semibold text-on-primary flex items-center justify-center gap-2 group shadow-[0_4px_14px_0_rgba(76,215,246,0.39)] hover:shadow-[0_0_20px_rgba(76,215,246,0.4)] hover:-translate-y-[1px] transition-all disabled:opacity-70 disabled:cursor-not-allowed" type="submit">
-                {(isLogin ? isLoginPending : isRegisterPending) ? (
-                    <svg className="animate-spin h-5 w-5 text-on-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                ) : (
-                    <>
-                        <span>{isLogin ? 'Masuk' : 'Daftar'}</span>
-                        <i className="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                    </>
-                )}
-              </button>
-            </div>
+            {isLogin && loginState?.errors?.general && <p className="text-error text-sm bg-error-container/20 text-error p-3 rounded border border-error/20">{loginState.errors.general}</p>}
+            {!isLogin && registerState?.errors?.general && <p className="text-error text-sm bg-error-container/20 text-error p-3 rounded border border-error/20">{registerState.errors.general}</p>}
+
+            <button disabled={isLogin ? isLoginPending : isRegisterPending} className="w-full mt-1 bg-primary hover:bg-primary-fixed text-on-primary font-label-md text-label-md py-2 px-4 rounded transition-colors flex items-center justify-center gap-2 disabled:opacity-70" type="submit">
+              {(isLogin ? isLoginPending : isRegisterPending) ? (
+                <svg className="animate-spin h-5 w-5 text-on-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+              ) : (
+                <span>{isLogin ? 'Masuk' : 'Daftar'}</span>
+              )}
+            </button>
           </form>
-          
-          <div className="mt-6 text-center">
-            <p className="font-body-md text-sm text-on-surface-variant">
-              {isLogin ? 'Belum punya akses?' : 'Sudah terdaftar?'}
-              {' '}
-              <button 
-                type="button"
-                onClick={() => setIsLogin(!isLogin)} 
-                className="text-primary hover:text-primary-fixed font-medium transition-colors"
-              >
-                {isLogin ? 'Daftar Sistem' : 'Masuk Sistem'}
-              </button>
-            </p>
-          </div>
+        </div>
 
-          {/* Footer Links */}
-          <div className="mt-6 text-center border-t border-white/5 pt-4 w-full">
-            <p className="font-label-caps text-label-caps text-on-surface-variant">
-              Sistem Operasi Phantom <span className="text-primary/50 mx-2">|</span> v2.4.1
-            </p>
-          </div>
+        <div className="text-center mt-2">
+          <p className="font-label-sm text-label-sm text-on-surface-variant">
+            {isLogin ? 'Belum memiliki akun?' : 'Sudah terdaftar?'}
+            <button type="button" onClick={() => setIsLogin(!isLogin)} className="text-primary hover:text-primary-fixed transition-colors font-label-md text-label-md ml-1">
+              {isLogin ? 'Daftar' : 'Masuk'}
+            </button>
+          </p>
         </div>
       </main>
-      
-      {/* Shared Footer from JSON (Contextual adaptation: Minimal version for Login) */}
-      <footer className="absolute bottom-0 w-full py-2 px-container-padding flex flex-col md:flex-row justify-between items-center bg-surface-container-lowest/50 backdrop-blur-md border-t border-white/5 z-10">
-        <div className="font-label-caps text-label-caps text-primary mb-2 md:mb-0">
-            AUTOCARE PHANTOM
-        </div>
-        <div className="font-body-md text-body-md text-on-surface-variant text-sm">
-            © 2024 AutoCare Phantom Systems. All rights reserved.
-        </div>
-        <div className="flex gap-4 mt-2 md:mt-0 font-body-md text-body-md text-sm">
-            <a className="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
-            <a className="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
-        </div>
-      </footer>
     </div>
   )
 }

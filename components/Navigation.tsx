@@ -7,18 +7,12 @@ import { logout } from '@/app/actions/auth'
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
-  // Simple client-side redirect for logout
-  const handleLogout = () => {
-    window.location.href = '/login' // Or we can trigger a form submit to the Server Action
-  }
-
   return (
     <>
       {/* Mobile Nav */}
-      <nav className="md:hidden glass-panel fixed top-0 w-full z-50 px-container-padding py-4 flex justify-between items-center border-b border-white/5">
+      <nav className="md:hidden bg-surface fixed top-0 w-full z-50 border-b border-outline-variant flex justify-between items-center px-6 h-16">
         <Link href="/dashboard" className="flex items-center gap-3">
-          <img alt="AutoCare Logo" className="w-8 h-8 rounded-full object-cover shadow-[0_0_15px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AP1WRLuOi-fKT5G3ETKsEt4RFHebcQw6PqvDMD5QMTawKTH1A2XM9z1a3YaVXpfYo5zIBPjkpEaqdyIJ2Ykn2yqD1SaGpHiMsY4Il4O14JqY61Bjc5GljCSb8h3kMJh5XNeLsQqkO81DgbJc-BZxgXLcfLn0WynuFuMKeoog2EELfVd55N0EeCEuYHXM8aJ7kbmZxnbwL5oornidPs7FA7uPdC7Xu71O48Q1i0DU8rtvZzVOh85ef-pLeQEpXJA"/>
-          <span className="font-display-lg-mobile text-display-lg-mobile text-primary drop-shadow-[0_0_15px_rgba(76,215,246,0.5)]">AutoCare</span>
+          <span className="font-headline-md text-headline-md font-bold text-primary">AutoCare</span>
         </Link>
         <button 
           onClick={() => setIsOpen(!isOpen)}
@@ -36,49 +30,39 @@ export default function Navigation() {
         />
       )}
 
-      {/* Sidebar (Desktop + Mobile) */}
-      <nav className={`glass-panel fixed left-0 top-0 h-screen py-glass-padding z-40 border-r border-white/5 shadow-[20px_0_40px_rgba(0,0,0,0.3)] group overflow-hidden flex-col transition-all duration-300
-        ${isOpen ? 'translate-x-0 w-64 flex' : '-translate-x-full md:translate-x-0 md:flex md:w-20 md:hover:w-64'}`}
-      >
-        <Link href="/dashboard" className="flex items-center px-6 mb-12 shrink-0 md:mt-0 mt-16" onClick={() => setIsOpen(false)}>
-          <img alt="AutoCare Logo" className="w-8 h-8 rounded-full object-cover shadow-[0_0_15px_rgba(76,215,246,0.3)] shrink-0" src="https://lh3.googleusercontent.com/aida/AP1WRLuOi-fKT5G3ETKsEt4RFHebcQw6PqvDMD5QMTawKTH1A2XM9z1a3YaVXpfYo5zIBPjkpEaqdyIJ2Ykn2yqD1SaGpHiMsY4Il4O14JqY61Bjc5GljCSb8h3kMJh5XNeLsQqkO81DgbJc-BZxgXLcfLn0WynuFuMKeoog2EELfVd55N0EeCEuYHXM8aJ7kbmZxnbwL5oornidPs7FA7uPdC7Xu71O48Q1i0DU8rtvZzVOh85ef-pLeQEpXJA"/>
-          <span className={`ml-4 font-headline-md text-headline-md text-primary tracking-widest transition-opacity duration-300 whitespace-nowrap ${isOpen ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'}`}>AutoCare</span>
-        </Link>
-        <div className="flex-1 flex flex-col gap-2 w-full px-2">
-          <Link onClick={() => setIsOpen(false)} className="flex items-center w-full px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300" href="/dashboard">
-            <i className="fa-solid fa-table-columns shrink-0"></i>
-            <span className={`ml-4 font-label-caps text-label-caps transition-opacity duration-300 whitespace-nowrap ${isOpen ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'}`}>Dashboard</span>
+      {/* Sidebar (Desktop) - Mobile sidebar when toggled */}
+      <nav className={`bg-surface-container fixed left-0 top-0 h-full w-64 border-r border-outline-variant flex-col gap-2 p-4 z-40 transition-transform duration-200 md:flex
+        ${isOpen ? 'flex translate-x-0' : 'hidden -translate-x-full md:flex md:translate-x-0'}`}>
+        <div className="mb-6 px-2">
+          <div className="font-headline-md text-headline-md font-bold text-primary">AutoCare</div>
+          <div className="font-label-sm text-label-sm text-on-surface-variant">Fleet Management</div>
+        </div>
+        <div className="flex flex-col gap-1">
+          <Link onClick={() => setIsOpen(false)} className="flex items-center gap-4 p-2 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest transition-all duration-200 rounded-lg" href="/dashboard">
+            <i className="fa-solid fa-table-columns w-5"></i>
+            <span className="font-label-md text-label-md">Dashboard</span>
           </Link>
-          <Link onClick={() => setIsOpen(false)} className="flex items-center w-full px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300" href="/dashboard/history">
-            <i className="fa-solid fa-clock-rotate-left shrink-0"></i>
-            <span className={`ml-4 font-label-caps text-label-caps transition-opacity duration-300 whitespace-nowrap ${isOpen ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'}`}>History</span>
+          <Link onClick={() => setIsOpen(false)} className="flex items-center gap-4 p-2 text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest transition-all duration-200 rounded-lg" href="/dashboard/history">
+            <i className="fa-solid fa-clock-rotate-left w-5"></i>
+            <span className="font-label-md text-label-md">History</span>
           </Link>
         </div>
-        <div className={`mt-auto px-4 w-full transition-opacity duration-300 flex justify-center mb-6 ${isOpen ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'}`}>
-          <Link onClick={() => setIsOpen(false)} href="/dashboard/vehicles/new" className="bg-gradient-to-r from-primary to-secondary text-on-primary font-label-caps text-label-caps px-4 py-2 rounded-full w-full hover:shadow-[0_0_20px_rgba(76,215,246,0.5)] transition-all whitespace-nowrap text-center block">
-            Schedule Service
-          </Link>
-        </div>
-        <div className="border-t border-white/5 pt-4 flex flex-col gap-2 w-full px-2 mt-auto shrink-0">
-          <form action={logout} className="w-full">
-            <button type="submit" className="flex items-center w-full px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-all duration-300">
-              <i className="fa-solid fa-right-from-bracket shrink-0"></i>
-              <span className={`ml-4 font-label-caps text-label-caps transition-opacity duration-300 whitespace-nowrap ${isOpen ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'}`}>Logout</span>
-            </button>
-          </form>
-          {/* User Profile Placeholder */}
-          <div className={`flex items-center w-full px-4 py-3 mt-2 transition-opacity duration-300 whitespace-nowrap ${isOpen ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'}`}>
-            <div className="w-8 h-8 rounded-full bg-surface-bright flex items-center justify-center text-primary font-bold text-sm shrink-0 border border-primary/30">
+        <div className="mt-auto border-t border-outline-variant pt-4 flex flex-col gap-2">
+          <div className="flex items-center gap-3 px-2 py-2">
+            <div className="w-8 h-8 rounded-full bg-surface-bright flex items-center justify-center text-primary font-bold text-sm shrink-0">
               JD
             </div>
-            <div className="ml-3 flex flex-col overflow-hidden">
+            <div className="flex flex-col">
               <span className="font-body-md text-sm text-on-surface truncate">AutoCare Pro</span>
-              <span className="font-label-caps text-[10px] text-primary flex items-center gap-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_5px_rgba(76,215,246,1)]"></div>
-                System Active
-              </span>
+              <span className="font-label-sm text-[10px] text-primary flex items-center gap-1">System Active</span>
             </div>
           </div>
+          <form action={logout}>
+            <button type="submit" className="flex items-center w-full gap-4 p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-error transition-all duration-200">
+              <i className="fa-solid fa-right-from-bracket w-5"></i>
+              <span className="font-label-md text-label-md">Logout</span>
+            </button>
+          </form>
         </div>
       </nav>
     </>

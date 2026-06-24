@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoCare - Pantau Servis Lebih Mudah</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#002d43",
+                        "secondary-container": "#3a4a5f",
+                        "surface-container-highest": "#283647",
+                        "on-background": "#d5e4fa",
+                        "outline-variant": "#424654",
+                        "surface-container-low": "#0e1c2d",
+                        "on-primary": "#002d6e",
+                        "on-primary-container": "#002761",
+                        "on-primary-fixed": "#001944",
+                        "on-error": "#690005",
+                        "inverse-primary": "#0058ca",
+                        "on-tertiary": "#00344d",
+                        "background": "#051424",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "surface-variant": "#283647",
+                        "secondary-fixed": "#d3e4fe",
+                        "tertiary": "#89ceff",
+                        "secondary": "#b7c8e1",
+                        "surface-dim": "#051424",
+                        "tertiary-fixed-dim": "#89ceff",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "outline": "#8c90a0",
+                        "on-secondary": "#213145",
+                        "surface-container": "#122031",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "primary-fixed": "#d9e2ff",
+                        "surface": "#051424",
+                        "surface-container-lowest": "#010f1f",
+                        "on-surface-variant": "#c2c6d7",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "tertiary-fixed": "#c9e6ff",
+                        "surface-bright": "#2c3a4c",
+                        "on-secondary-container": "#a9bad3",
+                        "primary-container": "#558dff",
+                        "tertiary-container": "#009ada",
+                        "surface-tint": "#b0c6ff",
+                        "on-primary-fixed-variant": "#00429b",
+                        "primary": "#b0c6ff",
+                        "on-surface": "#d5e4fa",
+                        "inverse-on-surface": "#233143",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "surface-container-high": "#1d2b3c",
+                        "inverse-surface": "#d5e4fa",
+                        "on-tertiary-fixed": "#001e2f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "grid-margin": "24px",
+                        "grid-gutter": "16px",
+                        "base": "8px",
+                        "sm": "8px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Montserrat"],
+                        "body-md": ["Montserrat"],
+                        "headline-lg-mobile": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "label-sm": ["Montserrat"],
+                        "body-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"],
+                        "label-md": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Simplified for Landing Page Mobile) -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant flex justify-between items-center px-md h-16 transition-all duration-300">
+<div class="font-headline-md text-headline-md font-bold text-primary tracking-tight">AutoCare</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95">dark_mode</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-16 flex flex-col gap-xl">
+<!-- Hero Section -->
+<section class="px-md flex flex-col items-center text-center gap-lg">
+<div class="flex flex-col gap-sm">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest">Fleet Management</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface leading-tight">Pantau Servis <br/><span class="text-primary">Lebih Mudah</span></h1>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mx-auto">
+                Platform profesional untuk manajemen perawatan armada otomotif. Dirancang khusus untuk efisiensi, presisi, dan akurasi data.
+            </p>
+<div class="w-full flex flex-col gap-sm mt-sm">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-3 px-6 rounded hover:bg-primary-fixed transition-colors active:scale-95 border border-transparent shadow-[0_0_0_1px_rgba(30,41,59,0)]">Mulai Sekarang</button>
+<button class="w-full bg-transparent text-primary font-label-md text-label-md py-3 px-6 rounded border border-outline-variant hover:bg-surface-container-high transition-colors active:scale-95">Pelajari Lebih Lanjut</button>
+</div>
+</section>
+<!-- Hero Visual -->
+<section class="px-md w-full">
+<div class="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-outline-variant bg-surface-container-low shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+<img class="w-full h-full object-cover" data-alt="A highly detailed, professional macro shot of a modern car dashboard interface glowing with telematics data. The screen displays precise diagnostics and performance metrics in crisp blue and white tones against a deep navy background. The lighting is low-key studio style, highlighting the sleek, machined textures of the surrounding interior trim. The mood is high-tech, reliable, and firmly grounded in advanced automotive engineering, reflecting a premium dark-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCaz0dSW1g4dhrDM0m-9JT1q1o85hm1I1o7QwD0CJ1xStnnizdeP0ztbVA5ehkaTYJ5eY1H-43wcybRota06P5lQkY_cNCf_FMeklGciGobAPDA0viWZqnnsMDX3F06CDzqYixskWVFmFp95PmRGPyvLGZQKkHN03_bMRuyU_xxBtYqSoHQdowfChtRxpDcJ9eAwq5QiB7Mp150NHhByM4cZebPI_6l-pFJmgbf7uwDi2rgB0OTc5xRZklIiLr2yRMNXIqtE3Z9mye"/>
+<!-- Overlay Gradient for Depth -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80 pointer-events-none"></div>
+</div>
+</section>
+<!-- Features Bento Grid (Mobile Stacking) -->
+<section class="px-md flex flex-col gap-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-lg flex flex-col gap-md hover:border-primary transition-colors">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-xl">dashboard</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Dashboard Real-time</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Pantau metrik krusial dan status kendaraan seluruh armada Anda dalam satu tampilan presisi.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-lg flex flex-col gap-md hover:border-primary transition-colors">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-xl">history</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Riwayat Presisi</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Akses log servis historis yang tidak dapat diubah, memastikan kepatuhan dan keandalan armada.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-lg flex flex-col gap-md hover:border-primary transition-colors">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-xl">build</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Jadwal Otomatis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Sistem peringatan cerdas untuk pemeliharaan preventif berdasarkan jarak tempuh dan waktu.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-lg mt-auto border-t border-outline-variant bg-surface-container-lowest flex flex-col justify-between items-center px-md gap-md">
+<div class="font-label-md text-label-md font-bold text-on-surface tracking-widest uppercase">AutoCare</div>
+<div class="flex flex-wrap justify-center gap-md font-label-sm text-label-sm text-outline">
+<a class="hover:text-on-surface transition-colors underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="hover:text-on-surface transition-colors underline-offset-4 hover:underline" href="#">Terms of Service</a>
+<a class="hover:text-on-surface transition-colors underline-offset-4 hover:underline" href="#">Contact</a>
+</div>
+<div class="font-label-sm text-label-sm text-outline">
+            © 2024 AutoCare Systems
+        </div>
+</footer>
+</body></html>

@@ -14,14 +14,14 @@ export default async function HistoryPage() {
     })
 
     return (
-        <main className="flex-1 w-full md:pl-24 pt-20 md:pt-8 px-4 md:px-8 pb-24 overflow-y-auto">
-            <div className="max-w-4xl mx-auto space-y-8">
+        <div className="p-6 flex-1 flex flex-col mx-auto w-full">
+            <div className="max-w-4xl w-full space-y-8">
                 <header className="mb-10">
-                    <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface tracking-tight text-glow mb-2">Riwayat Servis</h1>
+                    <h1 className="font-display-lg text-headline-lg md:text-display-lg text-on-surface tracking-tight mb-2">Riwayat Servis</h1>
                     <p className="font-body-lg text-on-surface-variant">Semua catatan perawatan dari seluruh kendaraan Anda.</p>
                 </header>
 
-                <div className="glass-panel rounded-xl p-6">
+                <div className="bg-surface-container-low border border-outline-variant rounded-lg p-6">
                     {history.length === 0 ? (
                         <div className="text-center py-12 text-on-surface-variant">
                             <i className="fa-solid fa-clock-rotate-left text-6xl opacity-20 mb-4 block"></i>
@@ -42,7 +42,7 @@ export default async function HistoryPage() {
                                                     <h4 className="font-headline-md text-[16px] text-on-surface group-hover:text-primary transition-colors">
                                                         {record.type === 'oil_change' ? 'Ganti Oli' : record.type === 'servis_rutin' ? 'Servis Rutin' : 'Penggantian Part'}
                                                     </h4>
-                                                    <span className="font-label-caps text-[10px] px-2 py-0.5 rounded-full bg-surface-container-highest border border-white/5 text-on-surface-variant">
+                                                    <span className="font-label-sm text-[10px] px-2 py-0.5 rounded-full bg-surface-container-highest border border-white/5 text-on-surface-variant">
                                                         {record.vehicle.brand} {record.vehicle.model}
                                                     </span>
                                                 </div>
@@ -52,8 +52,8 @@ export default async function HistoryPage() {
                                             </div>
                                         </div>
                                         <div className="text-left md:text-right flex flex-row md:flex-col justify-between items-center md:items-end w-full md:w-auto shrink-0 relative z-10">
-                                            <span className="font-label-caps text-[11px] text-outline mb-1.5">{record.serviceDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                                            <span className="font-label-caps text-[12px] text-on-surface bg-primary/10 text-primary px-3 py-1 rounded-full border border-primary/20 shadow-[0_0_10px_rgba(76,215,246,0.1)]">
+                                            <span className="font-label-sm text-[11px] text-outline mb-1.5">{record.serviceDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                                            <span className="font-label-sm text-[12px] text-on-surface bg-primary/10 text-primary px-3 py-1 rounded-full border border-primary/20 shadow-[0_0_10px_rgba(76,215,246,0.1)]">
                                                 {record.kmAtService.toLocaleString('id-ID')} km
                                             </span>
                                         </div>
@@ -64,6 +64,6 @@ export default async function HistoryPage() {
                     )}
                 </div>
             </div>
-        </main>
+        </div>
     )
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Sora, JetBrains_Mono } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import { Toaster } from "sonner";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -11,14 +11,10 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const sora = Sora({
-  variable: "--font-sora",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -36,7 +32,7 @@ export default function RootLayout({
       <head>
         <script src="https://kit.fontawesome.com/9d2a010394.js" crossOrigin="anonymous" async></script>
       </head>
-      <body className={`${inter.variable} ${sora.variable} ${jetbrainsMono.variable} font-sans min-h-screen flex flex-col bg-background text-on-surface selection:bg-primary-container/30`}>
+      <body className={`${inter.variable} ${montserrat.variable} font-sans min-h-screen flex flex-col bg-background text-on-surface selection:bg-primary-container/30`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
           <SpeedInsights />

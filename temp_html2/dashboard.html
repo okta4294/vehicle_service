@@ -1,370 +1,236 @@
-<!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>AutoCare - Garasi</title>
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AutoCare - Garage Dashboard</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Sora:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
           theme: {
             extend: {
               "colors": {
+                      "on-tertiary-container": "#002d43",
+                      "secondary-container": "#3a4a5f",
+                      "surface-container-highest": "#283647",
+                      "on-background": "#d5e4fa",
+                      "outline-variant": "#424654",
+                      "surface-container-low": "#0e1c2d",
+                      "on-primary": "#002d6e",
+                      "on-primary-container": "#002761",
+                      "on-primary-fixed": "#001944",
                       "on-error": "#690005",
+                      "inverse-primary": "#0058ca",
+                      "on-tertiary": "#00344d",
+                      "background": "#051424",
+                      "on-tertiary-fixed-variant": "#004c6e",
+                      "surface-variant": "#283647",
+                      "secondary-fixed": "#d3e4fe",
+                      "tertiary": "#89ceff",
+                      "secondary": "#b7c8e1",
+                      "surface-dim": "#051424",
+                      "tertiary-fixed-dim": "#89ceff",
                       "error": "#ffb4ab",
-                      "primary-fixed-dim": "#4cd7f6",
-                      "surface-container-low": "#151b2d",
-                      "surface-container-highest": "#2e3447",
-                      "outline": "#869397",
-                      "on-surface-variant": "#bcc9cd",
-                      "outline-variant": "#3d494c",
-                      "surface-dim": "#0c1324",
-                      "surface-variant": "#2e3447",
-                      "secondary-fixed": "#e9ddff",
-                      "on-secondary-fixed": "#23005c",
                       "on-error-container": "#ffdad6",
-                      "on-background": "#dce1fb",
-                      "background": "#0c1324",
-                      "secondary-container": "#571bc1",
-                      "on-tertiary-container": "#5b3200",
-                      "inverse-on-surface": "#2a3043",
-                      "tertiary-fixed": "#ffdcbf",
-                      "primary-container": "#06b6d4",
-                      "on-secondary": "#3c0091",
                       "error-container": "#93000a",
-                      "on-secondary-fixed-variant": "#5516be",
-                      "tertiary-fixed-dim": "#ffb873",
-                      "surface-container-high": "#23293c",
-                      "primary": "#4cd7f6",
-                      "inverse-primary": "#00687a",
-                      "on-tertiary": "#4b2800",
-                      "on-tertiary-fixed": "#2d1600",
-                      "on-primary-fixed-variant": "#004e5c",
-                      "on-primary-container": "#00424f",
-                      "surface-tint": "#4cd7f6",
-                      "tertiary": "#ffb873",
-                      "on-primary-fixed": "#001f26",
-                      "surface-container-lowest": "#070d1f",
-                      "surface": "#0c1324",
-                      "on-tertiary-fixed-variant": "#6a3b00",
-                      "tertiary-container": "#e89337",
-                      "on-secondary-container": "#c4abff",
-                      "secondary-fixed-dim": "#d0bcff",
-                      "on-primary": "#003640",
-                      "surface-bright": "#33394c",
-                      "inverse-surface": "#dce1fb",
-                      "surface-container": "#191f31",
-                      "primary-fixed": "#acedff",
-                      "on-surface": "#dce1fb",
-                      "secondary": "#d0bcff"
+                      "outline": "#8c90a0",
+                      "on-secondary": "#213145",
+                      "surface-container": "#122031",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "primary-fixed": "#d9e2ff",
+                      "surface": "#051424",
+                      "surface-container-lowest": "#010f1f",
+                      "on-surface-variant": "#c2c6d7",
+                      "primary-fixed-dim": "#b0c6ff",
+                      "tertiary-fixed": "#c9e6ff",
+                      "surface-bright": "#2c3a4c",
+                      "on-secondary-container": "#a9bad3",
+                      "primary-container": "#558dff",
+                      "tertiary-container": "#009ada",
+                      "surface-tint": "#b0c6ff",
+                      "on-primary-fixed-variant": "#00429b",
+                      "primary": "#b0c6ff",
+                      "on-surface": "#d5e4fa",
+                      "inverse-on-surface": "#233143",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "surface-container-high": "#1d2b3c",
+                      "inverse-surface": "#d5e4fa",
+                      "on-tertiary-fixed": "#001e2f"
               },
               "borderRadius": {
-                      "DEFAULT": "1rem",
-                      "lg": "2rem",
-                      "xl": "3rem",
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
                       "full": "9999px"
               },
               "spacing": {
-                      "gutter": "16px",
-                      "container-padding": "24px",
-                      "glass-padding": "20px",
-                      "unit": "8px"
+                      "xs": "4px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "grid-margin": "24px",
+                      "grid-gutter": "16px",
+                      "base": "8px",
+                      "sm": "8px",
+                      "xl": "32px"
               },
               "fontFamily": {
-                      "display-lg": [
-                              "Sora"
-                      ],
-                      "label-caps": [
-                              "JetBrains Mono"
-                      ],
-                      "display-lg-mobile": [
-                              "Sora"
-                      ],
-                      "body-lg": [
-                              "Inter"
-                      ],
-                      "body-md": [
-                              "Inter"
-                      ],
-                      "headline-md": [
-                              "Sora"
-                      ]
+                      "display-lg": ["Montserrat"],
+                      "body-md": ["Montserrat"],
+                      "headline-lg-mobile": ["Montserrat"],
+                      "headline-lg": ["Montserrat"],
+                      "label-sm": ["Montserrat"],
+                      "body-lg": ["Montserrat"],
+                      "headline-md": ["Montserrat"],
+                      "label-md": ["Montserrat"]
               },
               "fontSize": {
-                      "display-lg": [
-                              "48px",
-                              {
-                                      "lineHeight": "1.1",
-                                      "letterSpacing": "0.05em",
-                                      "fontWeight": "700"
-                              }
-                      ],
-                      "label-caps": [
-                              "12px",
-                              {
-                                      "lineHeight": "1",
-                                      "letterSpacing": "0.1em",
-                                      "fontWeight": "500"
-                              }
-                      ],
-                      "display-lg-mobile": [
-                              "32px",
-                              {
-                                      "lineHeight": "1.2",
-                                      "letterSpacing": "0.02em",
-                                      "fontWeight": "700"
-                              }
-                      ],
-                      "body-lg": [
-                              "18px",
-                              {
-                                      "lineHeight": "1.6",
-                                      "letterSpacing": "0",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "body-md": [
-                              "16px",
-                              {
-                                      "lineHeight": "1.5",
-                                      "letterSpacing": "0",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "headline-md": [
-                              "24px",
-                              {
-                                      "lineHeight": "1.3",
-                                      "letterSpacing": "0.03em",
-                                      "fontWeight": "600"
-                              }
-                      ]
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
               }
-      },
-          },
+            }
+          }
         }
-      </script>
+    </script>
 <style>
-        body {
-            background-color: theme('colors.background');
-            color: theme('colors.on-surface');
-            overflow-x: hidden;
-        }
-
-        .glass-panel {
-            background: theme('colors.surface-container-low');
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        }
-        
-        .phantom-glow {
-            box-shadow: 0 0 20px rgba(76, 215, 246, 0.15);
-            transition: all 0.3s ease;
-        }
-
-        .phantom-glow:hover {
-            box-shadow: 0 0 30px rgba(76, 215, 246, 0.3);
-        }
-        
-        .nav-item-active {
-            position: relative;
-        }
-        .nav-item-active::before {
-            content: '';
-            position: absolute;
-            left: -1px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 60%;
-            background-color: theme('colors.primary');
-            border-radius: 0 4px 4px 0;
-            box-shadow: 0 0 10px theme('colors.primary');
-        }
-
-        .bg-grid-pattern {
-            background-image: 
-                linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
+        body { font-family: 'Montserrat', sans-serif; }
     </style>
 </head>
-<body class="bg-background min-h-screen flex flex-col md:flex-row relative">
-<!-- Decorative Background Grid -->
-<div class="fixed inset-0 z-0 pointer-events-none bg-grid-pattern opacity-50"></div>
-<div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[120px] z-0 pointer-events-none"></div>
-<!-- Top Navigation (Mobile) -->
-<nav class="md:hidden glass-panel fixed top-0 w-full z-50 px-container-padding py-4 flex justify-between items-center border-b border-white/5">
-<div class="flex items-center gap-3">
-<img alt="AutoCare Logo" class="w-8 h-8 rounded-full object-cover shadow-[0_0_15px_rgba(76,215,246,0.3)]" src="https://lh3.googleusercontent.com/aida/AP1WRLuOi-fKT5G3ETKsEt4RFHebcQw6PqvDMD5QMTawKTH1A2XM9z1a3YaVXpfYo5zIBPjkpEaqdyIJ2Ykn2yqD1SaGpHiMsY4Il4O14JqY61Bjc5GljCSb8h3kMJh5XNeLsQqkO81DgbJc-BZxgXLcfLn0WynuFuMKeoog2EELfVd55N0EeCEuYHXM8aJ7kbmZxnbwL5oornidPs7FA7uPdC7Xu71O48Q1i0DU8rtvZzVOh85ef-pLeQEpXJA"/>
-<span class="font-display-lg-mobile text-display-lg-mobile text-primary drop-shadow-[0_0_15px_rgba(76,215,246,0.5)]">AutoCare</span>
+<body class="bg-background text-on-background min-h-screen flex antialiased">
+<!-- Mobile TopNavBar -->
+<nav class="md:hidden bg-surface dark:bg-surface fixed top-0 w-full z-50 border-b border-outline-variant dark:border-outline-variant flex justify-between items-center px-grid-margin h-16 w-full">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">
+            AutoCare
+        </div>
+<div class="flex gap-md">
+<div class="text-primary dark:text-primary border-b-2 border-primary pb-1 font-body-md text-body-md cursor-pointer active:scale-95 transition-transform">Garage</div>
+<div class="text-on-surface-variant dark:text-on-surface-variant font-body-md text-body-md hover:text-primary dark:hover:text-primary-fixed transition-colors cursor-pointer active:scale-95 transition-transform">History</div>
 </div>
-<button class="text-on-surface-variant hover:text-primary transition-colors">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
-</button>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-on-surface-variant cursor-pointer active:scale-95 transition-transform">dark_mode</span>
+</div>
 </nav>
-<!-- Side Navigation (Desktop) -->
-<nav class="hidden md:flex glass-panel fixed left-0 top-0 h-screen w-20 hover:w-64 transition-all duration-300 flex-col py-glass-padding z-40 border-r border-white/5 shadow-[20px_0_40px_rgba(0,0,0,0.3)] group overflow-hidden">
-<div class="flex items-center px-6 mb-12 shrink-0">
-<img alt="AutoCare Logo" class="w-8 h-8 rounded-full object-cover shadow-[0_0_15px_rgba(76,215,246,0.3)] shrink-0" src="https://lh3.googleusercontent.com/aida/AP1WRLuOi-fKT5G3ETKsEt4RFHebcQw6PqvDMD5QMTawKTH1A2XM9z1a3YaVXpfYo5zIBPjkpEaqdyIJ2Ykn2yqD1SaGpHiMsY4Il4O14JqY61Bjc5GljCSb8h3kMJh5XNeLsQqkO81DgbJc-BZxgXLcfLn0WynuFuMKeoog2EELfVd55N0EeCEuYHXM8aJ7kbmZxnbwL5oornidPs7FA7uPdC7Xu71O48Q1i0DU8rtvZzVOh85ef-pLeQEpXJA"/>
-<span class="ml-4 font-headline-md text-headline-md text-primary tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">AutoCare</span>
+<!-- Desktop SideNavBar -->
+<nav class="hidden md:flex bg-surface-container dark:bg-surface-container fixed left-0 top-0 h-full w-64 border-r border-outline-variant dark:border-outline-variant flex-col gap-sm p-md">
+<div class="mb-lg px-sm">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">AutoCare</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Fleet Management</div>
 </div>
-<div class="flex-1 flex flex-col gap-2 w-full px-2">
-<!-- Nav Items from JSON -->
-<a class="flex items-center w-full px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300" href="#">
-<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 0;">dashboard</span>
-<span class="ml-4 font-label-caps text-label-caps opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Dashboard</span>
-</a>
-<a class="flex items-center w-full px-4 py-3 rounded-lg bg-primary/10 text-primary border-l-4 border-primary shadow-[0_0_20px_rgba(76,215,246,0.3)] nav-item-active transition-all duration-300" href="#">
-<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 1;">directions_car</span>
-<span class="ml-4 font-label-caps text-label-caps opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Garage</span>
-</a>
-<a class="flex items-center w-full px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300" href="#">
-<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 0;">history</span>
-<span class="ml-4 font-label-caps text-label-caps opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">History</span>
-</a>
-<a class="flex items-center w-full px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300" href="#">
-<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 0;">settings</span>
-<span class="ml-4 font-label-caps text-label-caps opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Settings</span>
-</a>
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-md p-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-all cursor-pointer transition-all duration-200 rounded-lg">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
 </div>
-<div class="mt-auto px-4 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center mb-6">
-<button class="bg-gradient-to-r from-primary to-secondary text-on-primary font-label-caps text-label-caps px-4 py-2 rounded-full w-full hover:shadow-[0_0_20px_rgba(76,215,246,0.5)] transition-all whitespace-nowrap">
-                Schedule Service
-            </button>
+<div class="flex items-center gap-md p-sm bg-secondary-container dark:bg-secondary-container text-on-secondary-container dark:text-on-secondary-container rounded-lg cursor-pointer transition-all duration-200">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-md text-label-md">Garage</span>
 </div>
-<div class="border-t border-white/5 pt-4 flex flex-col gap-2 w-full px-2 mt-auto shrink-0">
-<a class="flex items-center w-full px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-on-surface transition-all duration-300" href="#">
-<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 0;">help</span>
-<span class="ml-4 font-label-caps text-label-caps opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Support</span>
-</a>
-<a class="flex items-center w-full px-4 py-3 rounded-lg text-on-surface-variant hover:bg-white/5 hover:text-error transition-all duration-300" href="#">
-<span class="material-symbols-outlined shrink-0" style="font-variation-settings: 'FILL' 0;">logout</span>
-<span class="ml-4 font-label-caps text-label-caps opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Logout</span>
-</a>
-<!-- User Profile Placeholder -->
-<div class="flex items-center w-full px-4 py-3 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-<div class="w-8 h-8 rounded-full bg-surface-bright flex items-center justify-center text-primary font-bold text-sm shrink-0 border border-primary/30">
-                    JD
-                </div>
-<div class="ml-3 flex flex-col overflow-hidden">
-<span class="font-body-md text-sm text-on-surface truncate">AutoCare Pro</span>
-<span class="font-label-caps text-[10px] text-primary flex items-center gap-1">
-<div class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_5px_rgba(76,215,246,1)]"></div>
-                        System Active
-                    </span>
+<div class="flex items-center gap-md p-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-all cursor-pointer transition-all duration-200 rounded-lg">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-label-md">History</span>
 </div>
+<div class="flex items-center gap-md p-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high hover:bg-surface-container-highest dark:hover:bg-surface-container-highest transition-all cursor-pointer transition-all duration-200 rounded-lg">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
 </div>
 </div>
 </nav>
 <!-- Main Content Canvas -->
-<main class="flex-1 w-full pt-20 md:pt-0 md:ml-20 transition-all duration-300 z-10 p-4 md:p-8 lg:p-12 max-w-7xl mx-auto">
+<main class="flex-1 w-full pt-16 md:pt-0 md:pl-64 flex flex-col">
+<div class="p-grid-margin flex-1 flex flex-col gap-lg max-w-7xl mx-auto w-full">
 <!-- Header Section -->
-<header class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 relative">
+<header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-md w-full">
 <div>
-<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2 tracking-tight">Kendaranku</h1>
-<div class="flex items-center gap-3">
-<div class="glass-panel px-3 py-1 rounded-full flex items-center gap-2 border border-primary/20">
-<div class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(76,215,246,0.8)]"></div>
-<span class="font-label-caps text-label-caps text-primary tracking-widest">All Systems Nominal</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">Garasi Kendaraan</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage and monitor your active fleet.</p>
 </div>
-</div>
-</div>
-<!-- Theme Toggle & Quick Actions -->
-<div class="flex items-center gap-4">
-<button class="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-on-surface hover:text-primary hover:shadow-[0_0_15px_rgba(76,215,246,0.3)] transition-all">
-<span class="material-symbols-outlined">search</span>
-</button>
-<button class="w-12 h-12 rounded-full glass-panel flex items-center justify-center text-primary shadow-[0_0_15px_rgba(76,215,246,0.2)] hover:shadow-[0_0_25px_rgba(76,215,246,0.5)] transition-all relative">
-<span class="material-symbols-outlined">notifications</span>
-<span class="absolute top-3 right-3 w-2 h-2 bg-error rounded-full"></span>
-</button>
-</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-md py-sm rounded flex items-center gap-sm hover:bg-primary-fixed transition-colors active:scale-95 border border-primary">
+<span class="material-symbols-outlined">add</span>
+                    Tambah Kendaraan
+                </button>
 </header>
-<!-- Vehicle Grid (Bento Style) -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Vehicle Grid (Bento/Card Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-grid-gutter w-full">
 <!-- Vehicle Card 1 -->
-<article class="glass-panel rounded-xl p-6 relative overflow-hidden group phantom-glow border-t border-primary/30">
-<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-<div class="flex justify-between items-start mb-6 relative z-10">
+<article class="bg-surface-container-low border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+
+<div class="p-md flex flex-col gap-md flex-1">
+<div class="flex justify-between items-start gap-sm">
 <div>
-<span class="font-label-caps text-label-caps text-on-surface-variant mb-1 block">Harian</span>
-<h2 class="font-headline-md text-headline-md text-on-surface">Honda Vario 160</h2>
-<p class="font-label-caps text-[10px] text-primary/70 mt-1">B 1234 XYZ</p>
+<h2 class="font-body-lg text-body-lg font-bold text-on-surface">Honda Vario 160</h2>
+<p class="font-body-md text-body-md text-on-surface-variant font-mono mt-xs">B 1234 XYZ</p>
 </div>
-<div class="w-10 h-10 rounded-full bg-surface-bright flex items-center justify-center border border-white/5 text-on-surface-variant">
-<span class="material-symbols-outlined text-xl">two_wheeler</span>
-</div>
-</div>
-<div class="h-32 mb-6 rounded-lg bg-surface-container relative overflow-hidden flex items-center justify-center border border-white/5 group-hover:border-primary/20 transition-colors">
-<!-- Conceptual Vehicle Image -->
-<div class="w-full h-full bg-gradient-to-b from-transparent to-surface-container-highest absolute inset-0 z-10"></div>
-<img alt="Vehicle" class="w-full h-full object-cover opacity-60 mix-blend-luminosity" data-alt="A sleek, modern dark-themed studio shot of a futuristic motorcycle silhouette. The motorcycle is subtly illuminated by edge-lighting in vivid electric cyan (#06b6d4) against a pitch-black obsidian background. The mood is high-tech, aggressive yet elegant, fitting a premium automotive diagnostic interface. Reflections emphasize the aerodynamic curves." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfJy2Ae_dl2ghh9amY_2AqW1DuCK7IXD2YVoxYxpA_o_wRCc7dA3siv5VQd74SxfIlqfjHXjFTPYNfPcP3qVMvuC-FC_MH38VT6LDwx9CN0DDvbhqxkDbq3Cer_6b503OGH8SZAFjR2eiyM_t6bqXUo2ox4_qKZ18EhtJba4kV2b9ZP0DXskmKdz-TpqoDEvq629Yr0vmCqbfCRiLozKH8qph7dl2WBsTOCTFrJ08IeaRLTsfhCx5lDD4Aj5KQtB7sNJmDex5XzH9B"/>
-</div>
-<div class="grid grid-cols-2 gap-4 relative z-10">
-<div class="bg-surface-container/50 rounded-lg p-3 border border-white/5">
-<span class="font-label-caps text-[10px] text-on-surface-variant block mb-1">Odometer</span>
-<div class="font-body-md text-body-md text-on-surface flex items-end gap-1">
-                            12,450 <span class="text-xs text-on-surface-variant mb-0.5">km</span>
+<div class="flex items-center gap-xs px-sm py-xs border border-outline rounded-full bg-surface">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Aman</span>
 </div>
 </div>
-<div class="bg-primary/10 rounded-lg p-3 border border-primary/20 shadow-[inset_0_0_10px_rgba(76,215,246,0.1)]">
-<span class="font-label-caps text-[10px] text-primary block mb-1">Status Servis</span>
-<div class="font-body-md text-body-md text-primary flex items-center gap-1">
-                            Aman <span class="material-symbols-outlined text-sm">check_circle</span>
+<div class="mt-auto pt-md border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">speed</span>
+<span class="font-label-md text-label-md">12,450 km</span>
 </div>
+<button class="font-label-sm text-label-sm text-primary hover:underline underline-offset-4">Details</button>
 </div>
 </div>
 </article>
 <!-- Vehicle Card 2 -->
-<article class="glass-panel rounded-xl p-6 relative overflow-hidden group hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] border-t border-white/10 transition-all duration-300">
-<div class="flex justify-between items-start mb-6 relative z-10">
+<article class="bg-surface-container-low border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+
+<div class="p-md flex flex-col gap-md flex-1">
+<div class="flex justify-between items-start gap-sm">
 <div>
-<span class="font-label-caps text-label-caps text-on-surface-variant mb-1 block">Keluarga</span>
-<h2 class="font-headline-md text-headline-md text-on-surface">Toyota Innova</h2>
-<p class="font-label-caps text-[10px] text-on-surface-variant/70 mt-1">D 456 ABC</p>
+<h2 class="font-body-lg text-body-lg font-bold text-on-surface">Toyota Hiace Commuter</h2>
+<p class="font-body-md text-body-md text-on-surface-variant font-mono mt-xs">D 5678 ABC</p>
 </div>
-<div class="w-10 h-10 rounded-full bg-surface-bright flex items-center justify-center border border-white/5 text-on-surface-variant">
-<span class="material-symbols-outlined text-xl">directions_car</span>
-</div>
-</div>
-<div class="h-32 mb-6 rounded-lg bg-surface-container relative overflow-hidden flex items-center justify-center border border-white/5">
-<div class="w-full h-full bg-gradient-to-b from-transparent to-surface-container-highest absolute inset-0 z-10"></div>
-<img alt="Vehicle" class="w-full h-full object-cover opacity-50 mix-blend-luminosity" data-alt="A cinematic, low-key lighting photograph of an SUV's front grille and headlights in a dark, atmospheric environment. The headlights emit a cool, precise white beam, contrasting with subtle cyan rim lighting on the vehicle's edges. The aesthetic is sophisticated, rugged yet refined, matching a modern glassmorphism UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIyelodVIp693Nb1TWkuTnuD3aSxk7Qghngp6dOgGFDKB7XC_2VFEVWShd6-JOVYtEEUv43ZRni1ibTCiLY24oiPtqjvw2qmrzE88_qJA44sAi_q8pJcuIQ0d5ujK138R25Ti2ivJG7_2BYCHwtUO8jAZF-uUkZDmUlWzp1DGTjwXb3eYsNxuVI1dxcXj0Ryoa7xPlHdPllZHT7m17LlSyrbhUgwuFY54jKerwnJiPSQP4KeB1mjgjl61Ecc1FS1K2Gf5mwX5Wf1eB"/>
-</div>
-<div class="grid grid-cols-2 gap-4 relative z-10">
-<div class="bg-surface-container/50 rounded-lg p-3 border border-white/5">
-<span class="font-label-caps text-[10px] text-on-surface-variant block mb-1">Odometer</span>
-<div class="font-body-md text-body-md text-on-surface flex items-end gap-1">
-                            85,200 <span class="text-xs text-on-surface-variant mb-0.5">km</span>
+<div class="flex items-center gap-xs px-sm py-xs border border-error rounded-full bg-surface">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="font-label-sm text-label-sm text-error uppercase tracking-wider">Perlu Servis</span>
 </div>
 </div>
-<div class="bg-surface-container/50 rounded-lg p-3 border border-white/5 text-on-surface-variant">
-<span class="font-label-caps text-[10px] block mb-1">Status Servis</span>
-<div class="font-body-md text-body-md flex items-center gap-1">
-                            2 Bln Lagi <span class="material-symbols-outlined text-sm">schedule</span>
+<div class="mt-auto pt-md border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">speed</span>
+<span class="font-label-md text-label-md">45,120 km</span>
 </div>
+<button class="font-label-sm text-label-sm text-primary hover:underline underline-offset-4">Details</button>
 </div>
 </div>
 </article>
-<!-- Add Vehicle Card (Dashed) -->
-<button class="rounded-xl p-6 border-2 border-dashed border-outline-variant hover:border-primary/50 bg-transparent flex flex-col items-center justify-center min-h-[300px] group transition-all duration-300 hover:bg-primary/5">
-<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-4 border border-white/5 group-hover:shadow-[0_0_20px_rgba(76,215,246,0.3)] group-hover:border-primary/30 transition-all duration-300">
-<span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary transition-colors">add</span>
+<!-- Vehicle Card 3 -->
+<article class="bg-surface-container-low border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+
+<div class="p-md flex flex-col gap-md flex-1">
+<div class="flex justify-between items-start gap-sm">
+<div>
+<h2 class="font-body-lg text-body-lg font-bold text-on-surface">Mitsubishi Fuso eCanter</h2>
+<p class="font-body-md text-body-md text-on-surface-variant font-mono mt-xs">L 9012 DEF</p>
 </div>
-<span class="font-headline-md text-lg text-on-surface-variant group-hover:text-on-surface transition-colors">Tambah Kendaraan</span>
-<span class="font-label-caps text-[10px] text-on-surface-variant/50 mt-2">Sinkronisasi data OBD2 tersedia</span>
-</button>
+<div class="flex items-center gap-xs px-sm py-xs border border-outline rounded-full bg-surface">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Aman</span>
+</div>
+</div>
+<div class="mt-auto pt-md border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">speed</span>
+<span class="font-label-md text-label-md">8,300 km</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary hover:underline underline-offset-4">Details</button>
+</div>
+</div>
+</article>
+</div>
 </div>
 </main>
+
+
 </body></html>
