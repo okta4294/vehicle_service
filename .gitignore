@@ -42,3 +42,9 @@ next-env.d.ts
 
 # opencode config
 opencode.json
+
+#ai 
+.agents
+.git-rewrite
+agent.md
+design.md

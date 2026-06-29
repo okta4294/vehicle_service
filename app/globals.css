@@ -198,4 +198,19 @@ body {
 }
 
 @layer utilities {
+  .glass {
+    @apply backdrop-blur-md bg-white/5 border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+  
+  .glass-dark {
+    @apply backdrop-blur-lg bg-black/40 border border-white/5 shadow-2xl;
+  }
+
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-tertiary;
+  }
+  
+  .text-gradient-white {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60;
+  }
 }
