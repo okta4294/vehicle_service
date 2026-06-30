@@ -1,19 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Fredoka } from "next/font/google";
 import { Toaster } from "sonner";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const fredoka = Fredoka({
+  variable: "--font-fredoka",
   subsets: ["latin"],
-});
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -31,7 +26,7 @@ export default function RootLayout({
       <head>
         <script src="https://kit.fontawesome.com/9d2a010394.js" crossOrigin="anonymous" async></script>
       </head>
-      <body className={`${inter.variable} ${montserrat.variable} font-sans min-h-screen flex flex-col bg-background text-on-surface selection:bg-primary-container/30`}>
+      <body className={`${fredoka.variable} font-sans min-h-screen flex flex-col bg-background text-on-surface selection:bg-primary-container/30`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
           <SpeedInsights />
