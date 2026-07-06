@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma'
 import { redirect, notFound } from 'next/navigation'
 import Link from 'next/link'
 import AddServiceForm from './AddServiceForm'
+import UpdateKmForm from './UpdateKmForm'
 
 export default async function VehicleDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await getSession()
@@ -112,12 +113,7 @@ Kembali ke Dashboard
 <div className="text-4xl font-display-lg text-primary mb-6 tracking-widest relative z-10">
                         {vehicle.currentKm.toLocaleString('id-ID')} <span className="text-xl text-primary/70">km</span>
 </div>
-<div className="flex gap-2 relative z-10">
-<input className="w-full bg-surface-container/50 border border-outline-variant rounded-lg px-4 py-2 font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Update KM..." type="number"/>
-<button className="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-sm text-label-sm hover:bg-primary-fixed transition-colors">
-<i className="fa-solid fa-arrows-rotate"></i>
-</button>
-</div>
+<UpdateKmForm vehicleId={vehicle.id} currentKm={vehicle.currentKm} />
 </div>
 {/*  FORM TAMBAH RIWAYAT  */}
     <div className="bg-surface-container-low border border-outline-variant rounded-lg p-6">
